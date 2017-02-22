@@ -33,14 +33,25 @@ fontSecondary()
 	colorPrimary 	= #C84F3B
 	colorSecondary 	= #656D78
 	
-	// Other colours
-	colorAmber 		= #B23600
-	colorBlue 		= #1F4788
-	colorGrass 		= #B8C91A
-	colorGrassDark  = #8CC152
-	colorPurple 	= #6A006F
-	colorRed 		= #A62935
-	colorYellow 	= #FFCC0A
+	/* Declarar variables de colores
+		[description] Estas son las variables con los diferentes colores
+		Estas variables solo funcionan en stylus, si desea usarlos en el portal debe incluirlos
+		en el array de librerias de colores.
+	*/	
+		
+	colorAmber 			= #B23600
+	colorAqua 			= #4FC1E9
+	colorBitterSweet 	= #FC6E51
+	colorBlue 			= #1F4788
+	colorGrass 			= #A0D468
+	colorLime 			= #B8C91A
+	colorLavender 		= #AC92EC
+	colorMint 			= #48CFAD
+	colorPinkRose 		= #EC87C0
+	colorPurple 		= #6A006F
+	colorRed 			= #A62935
+	colorSunFlower 		= #FFCE54
+	colorYellow 		= #FFCC0A
 	 	
 	// scale gray
 	colorGrayDark 	= #434A54
@@ -51,24 +62,31 @@ fontSecondary()
 	colorZoneThree 	= colorRed
 	colorZoneFour 	= colorYellow
 	colorZoneFive 	= colorAmber
-	colorZoneSix 	= colorGrass
+	colorZoneSix 	= colorLime
 	colorZoneSeven 	= colorBlue
 	
-	// Colores para generar los background color, botones, border-color, entre otros
+	/* Libreria de colores
+		[description] Array donde se almacena los colores. 
+		Este sirve de referencia para generar los colores para  los background color, botones, border-color, entre otros
+		Si desea incluir un color nuevo a la hoja de estilos, escriba el nombre del color seguido por dos puntos (:) y el hex del color
+	*/	
 	colors = {
 		amber: #B23600
 		black: black
-		blue: #1F4788
-		grass-dark : #8CC152
-		grass: #B8C91A
-		gray-dark: #434A54
-		gray-light: #EFEFEF
-		gray-medium: #AAB2BD
+		blue: colorBlue
+		success: #8cc152
+		danger: colorRed
+		info: #47abce
+		warning: #ffce54
+		lime: colorLime
+		gray-dark: colorGrayDark
+		gray-light: colorGrayLigth
+		gray-medium: colorGrayMedium
 		primary: colorPrimary 
-		purple: #6A006F
-		red: #A62935
+		purple: colorPurple
+		red: colorRed
 		white: white
-		yellow: #FFCC0A
+		yellow: colorYellow
 		zone-five: colorZoneFive
 		zone-four: colorZoneFour
 		zone-seven: colorZoneSeven
@@ -114,7 +132,7 @@ fontSecondary()
 	doDark(color)
 		return darken(color, 20%)
 	doLight(color)
-		return lighten(color, 20%)
+		return lighten(color, 50%)
 /*
 * General Tags
 * [description] Tags y clases generales con relacion al framework css
@@ -167,7 +185,7 @@ if modifyBtnDefault
 // Boton con fondo transparente y border 
 .c-btn
 	background 		transparent
-	border 			1px solid colorPrimary
+	border 			1px solid colorPrimary !important
 	color 			colorPrimary
 	padding 		btnPadding
 	text-transform 	textTransformBtn
@@ -180,7 +198,15 @@ if modifyBtnDefault
 		transition all .25s ease-in-out
 	&:visited
 		color white
-
+.btn-link
+	background transparent
+	border 0 !important
+	color colorLink
+	&:hover, &.active
+		background transparent
+		border 0 !important
+		color colorLinkHover
+		
 .pull-center
 	float none !important
 	margin 0 auto
@@ -191,7 +217,7 @@ if modifyBtnDefault
 /** Font Awesome */
 fontAwesome()
 	-webkit-font-smoothing antialiased
-	display inlin-block
+	display inline-block
 	font normal normal normal 14px/1 FontAwesome
 	font-size inherit
 	margin-right 0.3em
@@ -249,6 +275,27 @@ fontAwesome()
 * End Align tipography responsive
 */
 
+/*alerts **/
+.alert
+	&.alert-info
+		background-color lighten(colorAqua, 50%)
+		border-color doDark(colorAqua)
+		color doDark(colorBlue)
+	&.alert-success
+		background-color lighten(colorGrass, 30%)
+		border-color  colorGrass
+		color darken(colorGrass, 50%)
+	&.alert-danger
+		background-color lighten(colorRed, 60%)
+		border-color doDark(colorRed)
+		color doDark(colorRed)
+	&.alert-warning
+		background-color lighten(colorSunFlower, 30%)
+		border-color  colorYellow
+		color darken(colorYellow, 50%)
+
+/* end alerts */
+
 
 /* Bloque de iconos y titulo */
 .block-icon
@@ -292,20 +339,19 @@ fontAwesome()
 		background colorPrimary
 				
 /* end bloque de iconos */
-/* Background Hover */
+/* Background */
 bgColor(bgColor)
 	background bgColor !important
 	cFont = isDarkoLigth(color)
 	border-color cFont !important
 	color cFont !important
-
+	padding 0.3em
 for name, color in colors
 	.bg-{name}
 		bgColor(color)
-			
-    
-/* end background Hover */
-/* Background Hover */
+/* end background */
+
+/* Background Hover *//*
 bgHoverColor(bgColor)
 	background bgColor !important
 	cFont = isDarkoLigth(color)
@@ -324,7 +370,7 @@ borderColor(colorBorder)
 	border-color colorBorder !important
 
 for name, color in colors
-	.border-color-{name}
+	.border-{name}
 		borderColor(color)
 				
 /* end color border */
@@ -427,6 +473,7 @@ for name, color in colors
 /* Boxes color */
 
 .box
+	background-color white
 	padding 1em
 	.btn
 		margin 0.2em 
@@ -475,9 +522,11 @@ boxHeaderColor(color)
 		color cFont
 	h2
 		background color
+		color cFont
+		line-height 0.6em
 		margin -0.4em
 		margin-bottom 0.5em
-		padding 0 0.3em 0.3em 0.4em
+		padding 0.3em 0.4em
 		text-align inherit
 		.nxBlockTitle
 			color cFont
@@ -519,7 +568,6 @@ for name, color in colors
 
 /* End Boxes color */			
 
-
 /*Editor de texto*/
 .content-block
 	p
@@ -534,13 +582,12 @@ for name, color in colors
 			color colorLinkHover
 /* end Editor de Texto*/
 
-
-	
 // Content Columns
 .content-3-col
 	column-count 3
 	column-fill balance
 	column-gap 10px
+	
 @media (min-width:768px )
 	.content-3-col-md
 		column-count 3
@@ -555,81 +602,74 @@ for name, color in colors
 		color color !important
 
 for name, color in colors
-	.font-link-{name}
-		a
+	.font-link-{name} , .font-link-{name} >  a
 			color color !important
 			&:hover, &:focus
 				background-color color !important
 				fontColor = isDarkoLigth(color)
 				color fontColor !important
-		li.active > a
-			background-color color !important
-			fontColor = isDarkoLigth(color)
-			color fontColor !important
+				padding 0.3em
+	.font-link-{name} li.active > a
+		background-color color !important
+		fontColor = isDarkoLigth(color)
+		color fontColor !important
 		 	
 /* end font colors */
 
 // Iconos Menu float //
 .menu-float-sidebar
 		position absolute
+		.slick-list
+			overflow visible !important
 		.slick-track
 			width auto !important
 		.slick-slide
 			display block
 			float inherit
-			margin 1em 0
-			width 250px !important
+			margin 0
+			width 13.75em
 		.item
 			border 0
 			display block !important
 			width auto !important
+			overflow visible
 			.fa
 				margin 0
 			a
-				background colorRed
+				background-color colorRed
 				border 0
-				border-radius 50%
-				color colorRed
-				display inline-block
-				height 3.125em
+				height 2.5625em
 				margin 0.2em 0
-				padding 0.45em
+				padding 0
 				position relative
-				width 3.125em
+				text-align left
+				transition all .25s ease-in-out
 				.mediaPosition
+					border-radius 0
 					color white
-					font-size 1.8em
-					margin-top 0.1em
-					height auto
+					display inline-block
+					font-size 1.5em
+					height 1.7em
 					line-height 1
-					width auto
-					transition all .25s ease-in-out
+					padding 0.35em 0
+					text-align center
+					width 1.7em
 				.title 
-					background colorGrayDark
 					color white
-					display block
+					display inline-block
 					font-size 1.05em
 					font-weight 500
 					fontMain()
-					display none
-					position absolute
-					text-align center
-					top -7px
-					transition opacity .25s ease-in-out
+					margin 0
+					padding 0
+					padding-top 0.625em !important
+					text-align left
+					width auto
 				&:hover
-					background colorRed
-					color white
-					.title
-						color white
-						height auto
-						display block
-						padding 0.5em
-						transition all .25s ease-in-out
-					.mediaPosition
-						background transparent
-						border-radius 0
-						transform scale(1.1)
-						transition all .25s ease-in-out
+					background colorGrayDark !important
+					transition all .25s ease-in-out
+					.fa
+						background colorGrayDark
 .menu-float-fixed
 		position fixed
 .menu-float-top
@@ -639,30 +679,44 @@ for name, color in colors
 .menu-float-middle
 	top 40%
 .menu-float-right
-	right 0.625em
-	.title
-		right 3.3125em
-		text-align right
-		width 9.375em !important
+	right -11.2em
 	a
-		float right
+		right 0
+		.title
+			float left
+		.mediaPosition
+			float left
+		&:hover
+			right 11.2em
 .menu-float-left
-	margin-left 5% 
-	left 0
-	.title
-		left 3.3125em
-		text-align left
-		width 10.625em !important
+	left -11.2em
 	a
-		float left
+		left 0
+		.title
+			float right
+			text-align right
+		.mediaPosition
+			float right
+		&:hover
+			left 11.2em
+		
+	
 .menu-float-left-content
 	left 0
 	top 8%
 	margin-left -8%
 
 .menu-only-icon	
-	.item a:hover .title
-		display none
+	.item a
+		.mediaPosition
+			transition all .25s ease-in-out
+		&:hover 
+			right 0
+			.mediaPosition
+				font-size 1.55em
+				transition all .25s ease-in-out
+			.title
+				display none
 // End Iconos float //
 
 /** Bloques de enlaces */
@@ -680,8 +734,7 @@ for name, color in colors
 			margin-right 1em
 		&:hover
 			color colorLinkHover
-			transition all .25s ease-in-out
-			
+			transition all .25s ease-in-out		
 .list-inline
 	a
 		color colorLink
@@ -700,7 +753,6 @@ for name, color in colors
 		&:hover
 			color colorLinkHover
 			transition all .25s ease-in-out
-
 .list-unstyled
 	a:before
 		content ""
@@ -722,7 +774,7 @@ for name, color in colors
 	padding 1em 0
 .padding-left-right-1x
 	padding 0 1em
-	
+
 /* centered columns styles */
 .row-centered
 	text-align center
@@ -742,7 +794,30 @@ for name, color in colors
 	max-width 320px
 /* end centered column styles */
 
+/** Notes */
+.note
+	margin 0 0 1.25em
+	padding 0.9em 1.8em 0.9em  0.9em
+	border-left 0.4em solid #eee
+	border-radius 0 0.4em 0.4em 0
+	&.note-info
+		background-color lighten(colorAqua, 80%)
+		border-color doDark(colorAqua)
+		color doDark(colorBlue)
+	&.note-success
+		background-color lighten(colorGrass, 30%)
+		border-color  colorGrass
+		color darken(colorGrass, 50%)
+	&.note-danger
+		background-color lighten(colorRed, 60%)
+		border-color doDark(colorRed)
+		color doDark(colorRed)
+	&.note-warning
+		background-color lighten(colorSunFlower, 30%)
+		border-color  colorYellow
+		color darken(colorYellow, 50%)
 
+/** end notes**/ 
 /* Solo iconos*/
 .only-icon
 	.item
@@ -2055,7 +2130,7 @@ table
 			> tr
 				> td, > th 
 						border-color colorGrayLigth
-.dModPublicaciones
+.dModPublicaciones .main-content
 	.fa
 		margin-right 0.2em
 	
@@ -2068,9 +2143,8 @@ table
 			position relative
 			&:before
 				content "\f111"
-				font-size 7px
-				font-size 8px
 				fontAwesome()
+				font-size 7px
 				left 0
 				margin-right 0.3em
 				position absolute
@@ -2096,7 +2170,10 @@ table
 	color white
 
 
- 
+.tramite h2
+	background-color transparent
+	border-bottom 2px solid colorPrimary
+	padding 0.5em 0
 
 /* Sidebar */
 .sidebar
