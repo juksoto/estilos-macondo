@@ -1,0 +1,837 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+	<meta charset="UTF-8">
+	<title>Documentación Diseño Macondo</title>
+	<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous">
+	<link href="css/user.min.css" rel="stylesheet" type="text/css" />
+	<link href="css/style.css" rel="stylesheet" type="text/css" />
+</head>
+<body>
+<div class="docs-header">
+			<div class="container">
+				<div class="topic">
+				<h1>
+					Documentación estilos Macondo
+				</h1>
+				<p>
+					Esta documentación tiene como objetivo explicar todas las clases y la funcionalidad que se crearon en el <a href="http://alcaldia.nexura-egov.com" target="blank">montaje de Macondo</a>. Incluye librería de colores, las clases para los bloques y tipografías. 
+				</p>
+			</div>
+			</div>
+		</div>
+<div class="container">
+	<div class="row">
+		<!-- col-xs-12 -->
+		<div class="col-xs-12">
+			<div class="example">
+				<h2 class="example-title">Datos técnicos</h2>
+				<div class="row">
+					<div class="col-xs-12">
+						<p>
+							El proyecto se realizó en Stylus CSS y el archivo a editar es user.styl. El css está apoyado por el Framework Boostrap.
+						</p>
+						<p>
+							En las primeras líneas de la hoja de estilos de stylus, está la parametrización del portal, esto incluye:
+						</p>
+						<ul>
+							<li>Tipo de fuentes</li>
+							<li>Color principal y secundario del portal</li>
+							<li>Librería de colores*</li>
+							<li>Color de los enlaces</li>
+							<li>Personalización de botones y botón default</li>
+						</ul>
+					</div>
+					<p>
+						* Los colores se declaran como variables y solo son útiles dentro de la hoja de estilos de stylus. Sin embargo, sí desean que estos colores se hagan disponibles para las diferentes etiquetas como colores de fondo, colores de fuente, enlaces, entre otros; se debe agregar en el <i>array colors</i>.
+					</p>
+				</div>
+			</div>
+			<!-- Color UI -->
+			<div class="example">
+			        <h2 class="example-title">Librería de Colores</h2>
+			        <div class="row">
+			          <div class="col-md-2">
+			            <div class="color-swatches">
+			              <div class="swatches">
+			                <div class="clearfix">
+			                  <div class="pull-left light" style="background-color:#C84F3B"></div>
+			                  <div class="pull-right dark" style="background-color:#A23E2D"></div>
+			                </div>
+			                <div class="infos">
+			                  <h4>COLOR PRIMARY</h4>
+			                  <p>#C84F3B, #A23E2D</p>
+			                </div>
+			              </div>
+			            </div>
+			          </div>
+			          <div class="col-md-2">
+			            <div class="color-swatches">
+			              <div class="swatches">
+			                <div class="clearfix">
+			                  <div class="pull-left light" style="background-color:#B23600"></div>
+			                  <div class="pull-right dark" style="background-color:#8E2B00"></div>
+			                </div>
+			                <div class="infos">
+			                  <h4>AMBER</h4>
+			                  <p>#B23600, #8E2B00</p>
+			                </div>
+			              </div>
+			            </div>
+			          </div>
+			          <div class="col-md-2">
+			            <div class="color-swatches">
+			              <div class="swatches">
+			                <div class="clearfix">
+			                  <div class="pull-left light" style="background-color:#6A006F"></div>
+			                  <div class="pull-right dark" style="background-color:#550059"></div>
+			                </div>
+			                <div class="infos">
+			                  <h4>PURPLE</h4>
+			                  <p>#6A006F, #550059</p>
+			                </div>
+			              </div>
+			            </div>
+			          </div>
+			          <div class="col-md-2">
+			            <div class="color-swatches">
+			              <div class="swatches">
+			                <div class="clearfix">
+			                  <div class="pull-left light" style="background-color:#A62935"></div>
+			                  <div class="pull-right dark" style="background-color:#85212a"></div>
+			                </div>
+			                <div class="infos">
+			                  <h4>RED</h4>
+			                  <p>#A62935, #85212a</p>
+			                </div>
+			              </div>
+			            </div>
+			          </div>
+			          <div class="col-md-2">
+			            <div class="color-swatches">
+			              <div class="swatches">
+			                <div class="clearfix">
+			                  <div class="pull-left light" style="background-color:#FFCC0A"></div>
+			                  <div class="pull-right dark" style="background-color:#D4A800"></div>
+			                </div>
+			                <div class="infos">
+			                  <h4>YELLOW</h4>
+			                  <p>#FFCC0A, #D4A800</p>
+			                </div>
+			              </div>
+			            </div>
+			          </div>
+			          <div class="col-md-2">
+			            <div class="color-swatches">
+			              <div class="swatches">
+			                <div class="clearfix">
+			                  <div class="pull-left light" style="background-color:#B8C91A"></div>
+			                  <div class="pull-right dark" style="background-color:#93A115"></div>
+			                </div>
+			                <div class="infos">
+			                  <h4>LIME</h4>
+			                  <p>#B8C91A, #93A115</p>
+			                </div>
+			              </div>
+			            </div>
+			          </div>
+			        </div>
+	        </div>
+	      	<div class="example">
+		        <h2 class="example-title">Otros Colores <small>Algunos hay que habilitarlos en el Stylus.</small></h2>
+		        <div class="row">
+		          <div class="col-md-2">
+		            <div class="color-swatches">
+		              <div class="swatches">
+		                <div class="clearfix">
+		                  <div class="pull-left light" style="background-color:#1F4788"></div>
+		                  <div class="pull-right dark" style="background-color:#19396D"></div>
+		                </div>
+		                <div class="infos">
+		                  <h4>BLUE</h4>
+		                  <p>#1F4788, #19396D</p>
+		                </div>
+		              </div>
+		            </div>
+		          </div>
+		          <div class="col-md-2">
+		            <div class="color-swatches">
+		              <div class="swatches">
+		                <div class="clearfix">
+		                  <div class="pull-left light" style="background-color:#4FC1E9"></div>
+		                  <div class="pull-right dark" style="background-color:#3BAFDA"></div>
+		                </div>
+		                <div class="infos">
+		                  <h4>AQUA</h4>
+		                  <p>#4FC1E9, #3BAFDA</p>
+		                </div>
+		              </div>
+		            </div>
+		          </div>
+		          <div class="col-md-2">
+		            <div class="color-swatches">
+		              <div class="swatches">
+		                <div class="clearfix">
+		                  <div class="pull-left light" style="background-color:#48CFAD"></div>
+		                  <div class="pull-right dark" style="background-color:#37BC9B"></div>
+		                </div>
+		                <div class="infos">
+		                  <h4>MINT</h4>
+		                  <p>#48CFAD, #37BC9B</p>
+		                </div>
+		              </div>
+		            </div>
+		          </div>
+		          <div class="col-md-2">
+		            <div class="color-swatches">
+		              <div class="swatches">
+		                <div class="clearfix">
+		                  <div class="pull-left light" style="background-color:#A0D468"></div>
+		                  <div class="pull-right dark" style="background-color:#8CC152"></div>
+		                </div>
+		                <div class="infos">
+		                  <h4>GRASS</h4>
+		                  <p>#A0D468, #8CC152</p>
+		                </div>
+		              </div>
+		            </div>
+		          </div>
+		          <div class="col-md-2">
+		            <div class="color-swatches">
+		              <div class="swatches">
+		                <div class="clearfix">
+		                  <div class="pull-left light" style="background-color:#FFCE54"></div>
+		                  <div class="pull-right dark" style="background-color:#F6BB42"></div>
+		                </div>
+		                <div class="infos">
+		                  <h4>SUNFLOWER</h4>
+		                  <p>#FFCE54, #F6BB42</p>
+		                </div>
+		              </div>
+		            </div>
+		          </div>
+		          <div class="col-md-2">
+		            <div class="color-swatches">
+		              <div class="swatches">
+		                <div class="clearfix">
+		                  <div class="pull-left light" style="background-color:#FC6E51"></div>
+		                  <div class="pull-right dark" style="background-color:#E9573F"></div>
+		                </div>
+		                <div class="infos">
+		                  <h4>BITTERSWEET</h4>
+		                  <p>#FC6E51, #E9573F</p>
+		                </div>
+		              </div>
+		            </div>
+		          </div>
+		        </div>
+		        <div class="row">
+		          <div class="col-md-2">
+		            <div class="color-swatches">
+		              <div class="swatches">
+		                <div class="clearfix">
+		                  <div class="pull-left light" style="background-color:#ED5565"></div>
+		                  <div class="pull-right dark" style="background-color:#DA4453"></div>
+		                </div>
+		                <div class="infos">
+		                  <h4>GRAPEFRUIT</h4>
+		                  <p>#ED5565, #DA4453</p>
+		                </div>
+		              </div>
+		            </div>
+		          </div>
+		          <div class="col-md-2">
+		            <div class="color-swatches">
+		              <div class="swatches">
+		                <div class="clearfix">
+		                  <div class="pull-left light" style="background-color:#AC92EC"></div>
+		                  <div class="pull-right dark" style="background-color:#967ADC"></div>
+		                </div>
+		                <div class="infos">
+		                  <h4>LAVENDER</h4>
+		                  <p>#AC92EC, #967ADC</p>
+		                </div>
+		              </div>
+		            </div>
+		          </div>
+		          <div class="col-md-2">
+		            <div class="color-swatches">
+		              <div class="swatches">
+		                <div class="clearfix">
+		                  <div class="pull-left light" style="background-color:#EC87C0"></div>
+		                  <div class="pull-right dark" style="background-color:#D770AD"></div>
+		                </div>
+		                <div class="infos">
+		                  <h4>PINK ROSE</h4>
+		                  <p>#EC87C0, #D770AD</p>
+		                </div>
+		              </div>
+		            </div>
+		          </div>
+		          <div class="col-md-2">
+		            <div class="color-swatches">
+		              <div class="swatches">
+		                <div class="clearfix">
+		                  <div class="pull-left light" style="background-color:#F5F7FA"></div>
+		                  <div class="pull-right dark" style="background-color:#E6E9ED"></div>
+		                </div>
+		                <div class="infos">
+		                  <h4>LIGHT GRAY</h4>
+		                  <p>#F5F7FA, #E6E9ED</p>
+		                </div>
+		              </div>
+		            </div>
+		          </div>
+		          <div class="col-md-2">
+		            <div class="color-swatches">
+		              <div class="swatches">
+		                <div class="clearfix">
+		                  <div class="pull-left light" style="background-color:#CCD1D9"></div>
+		                  <div class="pull-right dark" style="background-color:#AAB2BD"></div>
+		                </div>
+		                <div class="infos">
+		                  <h4>MEDIUM GRAY</h4>
+		                  <p>#CCD1D9, #AAB2BD</p>
+		                </div>
+		              </div>
+		            </div>
+		          </div>
+		          <div class="col-md-2">
+		            <div class="color-swatches">
+		              <div class="swatches">
+		                <div class="clearfix">
+		                  <div class="pull-left light" style="background-color:#656D78"></div>
+		                  <div class="pull-right dark" style="background-color:#434A54"></div>
+		                </div>
+		                <div class="infos">
+		                  <h4>DARK GRAY</h4>
+		                  <p>#656D78, #434A54</p>
+		                </div>
+		              </div>
+		            </div>
+	          	   </div>
+	          	</div>
+	        	<div class="note note-info">
+                    <h4 class="block">   <span class="glyphicon glyphicon-alert" aria-hidden="true"></span> Tener en cuenta</h4>
+                    <p> Para generar las etiquetas para colores adicionales <strong>deben incluirse</strong> en el array "colors" en la hoja de stylus y compilarse.</p>
+                    <p>
+                    	El color primary, es el color principal del portal y es el color de la entidad.
+                    </p>
+                </div>
+	        </div>
+			<!-- End Color UI -->
+      		<!-- Buttons -->
+      		<div class="example">
+		        <h2 class="example-title">Buttons</h2>
+		        <div class="row">
+		          <div class="col-md-3">
+		            <button type="button" class="btn btn-block">Normal - Default</button>
+		          </div>
+		          <div class="col-md-3">
+		            <button type="button" class="btn c-btn btn-block">c-btn</button>
+		          </div>
+		          <div class="col-md-3">
+		            <button type="button" class="btn btn-purple btn-block">Color</button>
+		          </div>
+		          <div class="col-md-3">
+		            <button type="button" class="btn btn-success btn-block">Success</button>
+		          </div>
+		        </div>
+		        <div class="row">
+		          <div class="col-md-3">
+		            <button type="button" class="btn btn-info btn-block">Info</button>
+		          </div>
+		          <div class="col-md-3">
+		            <button type="button" class="btn btn-warning btn-block">Warning</button>
+		          </div>
+		          <div class="col-md-3">
+		            <button type="button" class="btn btn-danger btn-block">Danger</button>
+		          </div>
+		          <div class="col-md-3">
+		            <button type="button" class="btn btn-link btn-block">Link</button>
+		          </div>
+		        </div>
+		        <div class="note note-info">
+	                    <h4 class="block">   <span class="glyphicon glyphicon-alert" aria-hidden="true"></span> Tener en cuenta</h4>
+	                    <p> La etiqueta para los botones de colores es <strong> btn-<i>color</i></strong> Ejemplo: color-purple</p>
+	                  
+	                </div>
+	     	</div>
+	     	<!-- End Buttons -->
+	     	<!-- Utilidades Design -->
+      		<div class="example">
+		        <h2 class="example-title">Clases útiles</h2>
+		        <div class="row">
+		        	<!-- Alinear Tipografia -->
+		         	<div class="col-xs-12 col-md-6">
+			        	<h2 class="example-title">
+			          	Alinear Responsive Tipografia
+			          </h2>
+			          <p>
+			          	Dependiendo del tipo de resolucion se puede alinear los elementos. Boostrap permite text-center, text-left text-right. Sí desea hacerlo responsive debe escribir <strong>text-tipodispositivo-alineacion</strong>. Ejemplo: text-md-right
+			          </p>
+			          <p class="text-xs-center text-sm-right text-md-left text-lg-justify">Este es un texto de prueba.</p>
+			        </div>
+			        <!-- End Alinear Tipografia -->
+			        <!-- Backgrounds -->
+			        <div class="col-xs-12 col-md-6">
+			        	<h2 class="example-title">
+			          	Backgrounds
+			          </h2>
+			          <p>
+			          	Es útil para aplicar un color de fondo a cualquier elemento, puede ser un contenedor, un botón, labels, badges, entre otros. La etiqueta es <strong>bg-<i>color</i></strong>. Ejemplo: bg-blue.
+			          </p>
+			          <ul>
+			          	<li>
+			          		Labels: <span class="label bg-lime">Label background lime</span>
+			          	</li>
+			          	<li>
+			          		Bagdes: <span class="badge bg-warning">Badge background warning</span>
+			          	</li>
+			          	<li>
+			          		<h4 class="bg-amber">
+			          			Este es un titulo de encabezado 4
+			          		</h4>
+			          	</li>
+			          </ul>
+			        </div>
+			        <!-- End Backgrounds -->
+			        <div class="clearfix visible-md visible-lg" ></div>
+			        <!-- Centrar bloque -->
+			        <div class="col-xs-12 col-md-6">
+			        	<h2 class="example-title">
+			          	Centrar bloques
+			          </h2>
+			          <p>
+			          	Permite centrar un bloque usando la siguiente clase <strong>pull-center</strong>
+			          </p>
+			        </div>
+			        <!-- End Centrar bloque -->
+			        <!-- Color Borders -->
+			        <div class="col-xs-12 col-md-6">
+			        	<h2 class="example-title">
+			          	Color del Borde
+			          </h2>
+			          <p>
+			          	Es útil para cambiar el color del borde a cualquier elemento, puede ser un contenedor, un botón, labels, badges, entre otros. La etiqueta es <strong>border-<i>color</i></strong>. Ejemplo: border-ambar.
+			          </p>
+			          <blockquote class="border-purple">
+			          	Este es un contenedor de ejemplo
+			          </blockquote>
+			        </div>
+			        <!-- End Color Borders -->
+			        <div class="clearfix visible-md visible-lg" ></div>
+			        <!-- Color de enlaces -->
+			        <div class="col-xs-12 col-md-6">
+			        	<h2 class="example-title">
+			          	Color de los enlaces
+			          </h2>
+			          <p>
+			          	Cambia el color de una enlace. La clase es <strong> font-link-<i>color</i></strong>. Ejemplo: font-link-yellow. 
+			          </p>
+			          <p class="text-center"><a href="#" class="font-link-red"> Este es un enlace</a> <a href="#" class="font-link-yellow"> Este es otro enlace</a></p>
+			        </div>
+			        <!-- End Color de fuente -->
+			        <!-- Color de fuente -->
+			        <div class="col-xs-12 col-md-6">
+			        	<h2 class="example-title">
+			          	Color de la fuente
+			          </h2>
+			          <p>
+			          	Cambia el color de una fuente. La clase es <strong> font-<i>color</i></strong>. Ejemplo: font-blue. 
+			          </p>
+			          <p class="text-center"><span class="font-amber">Este es un ejemplo</span> <span class="font-blue">de colores de fuente </span></p>
+			        </div>
+			        <!-- End Color de fuente -->
+			        <div class="clearfix visible-md visible-lg" ></div>
+			        <!-- No Background -->
+			        <div class="col-xs-12 col-md-6">
+			        	<h2 class="example-title">
+			          	No Background
+			          </h2>
+			          <p>
+			          	Esta etiqueta transforma el color de fondo en transparente. La clase es <strong>no-bg-block</strong>
+			          </p>
+			        </div>
+			        <!-- End No Background -->
+			        <!-- Padding -->
+			        <div class="col-xs-12 col-md-6">
+			        	<h2 class="example-title">
+			          	Padding
+			          </h2>
+			          <p>
+			          	Los bloques en Nexura 7 tienen padding por defecto. Esta etiqueta permite editar el padding. Las clases son:
+			          </p>
+			          <ul>
+			          	<li>
+			          		No padding: <strong>no-padding</strong>
+			          	</li>
+			          	<li>
+			          		No padding superior e inferior: <strong>no-padding-top-bottom</strong>
+			          	</li>
+			          	<li>
+			          		No padding laterales: <strong>menu-float-left-right</strong>
+			          	</li>
+			          	<li>
+			          		Padding superior e inferior 1em (16px): <strong>padding-top-bottom-1x</strong>
+			          	</li>
+			          	<li>
+			          		Padding laterales 1em(16px): <strong>padding-left-right-1x</strong>
+			          	</li>
+			          </ul>
+			        </div>
+			        <!-- End Padding -->
+			        <div class="clearfix visible-md visible-lg" ></div>
+			        <!-- Texto 3 columnas -->
+			        <div class="col-xs-12 col-md-6">
+			        	<h2 class="example-title">
+			          	Texto a 3 columnas
+			          </h2>
+			          <p>
+			          	Convierte un texto a 3 columnas. Cada sección en el portal toma como base esta clase y personaliza sus colores o presentaciones. La clases es <strong>content-3-col</strong>. Si desea que solo sea visible para tablets y desktop, la clase es <strong>content-3-col-md</strong>. El ejemplo es <a href="http://alcaldia.nexura-egov.com/#footer">en el footer</a> 
+			          </p>
+			        </div>
+			        <!-- Texto 3 columnas -->
+			        
+		        </div>
+	     	</div>
+	     	<!-- End Clases Utiles -->
+			<!-- Alerts -->
+			<div class="example">
+		        <h2 class="example-title">Alerts</h2>
+		        <div class="row">
+		          <div class="col-md-6">
+		            <div class="alert alert-warning alert-dismissable">
+		              <button type="button" class="close" data-dismiss="alert" aria-hidden="true">×</button>
+		              <strong>Warning!</strong> Best check yo self, you're not looking too good.
+		            </div>
+		            <div class="alert alert-info alert-dismissable">
+		              <button type="button" class="close" data-dismiss="alert" aria-hidden="true">×</button>
+		              <strong>Well done!</strong> You successfully read this important alert message.
+		            </div>
+		          </div>
+		          <div class="col-md-6">
+		            <div class="alert alert-success alert-dismissable">
+		              <button type="button" class="close" data-dismiss="alert" aria-hidden="true">×</button>
+		              <strong>Heads up!</strong> This alert needs your attention, but it's not super important.
+		            </div>
+		            <div class="alert alert-danger">
+		              <button type="button" class="close" data-dismiss="alert" aria-hidden="true">×</button>
+		              <strong>Oh snap!</strong> Change a few things up and try submitting again.
+		            </div>
+		          </div>
+		        </div>
+		        <div class="row">
+		          <div class="col-md-6">
+		            <div class="alert alert-warning alert-dismissable">
+		              <button type="button" class="close" data-dismiss="alert" aria-hidden="true">×</button>
+		              <h4>Warning!</h4>
+		              <p>Change this and that and try again. <a class="alert-link">Duis mollis</a>, est non commodo luctus, nisi erat porttitor ligula, eget lacinia odio sem nec elit. Cras mattis consectetur purus sit amet fermentum.</p>
+		              <p><a class="btn btn-warning" href="#">Take this action</a> <a class="btn btn-link" href="#">Or do this</a></p>
+		            </div>
+		            <div class="alert alert-info">
+		              <button type="button" class="close" data-dismiss="alert" aria-hidden="true">×</button>
+		              <h4>Well done!</h4>
+		              <p>Change this and that and try again. <a class="alert-link">Duis mollis</a>, est non commodo luctus, nisi erat porttitor ligula, eget lacinia odio sem nec elit. Cras mattis consectetur purus sit amet fermentum.</p>
+		              <p><a class="btn btn-info" href="#">Take this action</a> <a class="btn btn-link" href="#">Or do this</a></p>
+		            </div>
+		          </div>
+		          <div class="col-md-6">
+		            <div class="alert alert-success alert-dismissable">
+		              <button type="button" class="close" data-dismiss="alert" aria-hidden="true">×</button>
+		              <h4>Heads up!</h4>
+		              <p>Change this and that and try again. <a class="alert-link">Duis mollis</a>, est non commodo luctus, nisi erat porttitor ligula, eget lacinia odio sem nec elit. Cras mattis consectetur purus sit amet fermentum.</p>
+		              <p><a class="btn btn-success" href="#">Take this action</a> <a class="btn btn-link" href="#">Or do this</a></p>
+		            </div>
+		            <div class="alert alert-danger alert-dismissable">
+		              <button type="button" class="close" data-dismiss="alert" aria-hidden="true">×</button>
+		              <h4>Oh snap!</h4>
+		              <p>Change this and that and try again. <a class="alert-link">Duis mollis</a>, est non commodo luctus, nisi erat porttitor ligula, eget lacinia odio sem nec elit. Cras mattis consectetur purus sit amet fermentum.</p>
+		              <p><a class="btn btn-danger" href="#">Take this action</a> <a class="btn btn-link" href="#">Or do this</a></p>
+		            </div>
+		          </div>
+		        </div>
+	      	</div>
+			<!-- end alerts -->
+			<!-- Box -->
+			<div class="example">
+		        <h2 class="example-title">Contenedores</h2>
+		        <div class="row">
+			        <div class="col-xs-12">
+			         	Esta etiqueta es para contenedores o cajas dentro de nuestro portal. La clase general es <strong>box</strong> 
+			         </div>
+			        <div class="col-xs-12 col-md-3">
+			         	<div class="box">
+			         		<h2>Box</h2>
+			         		<p>
+			         			Este es un contenedor con la clase <strong> box</strong>
+			         		</p>
+			         	</div>
+			        </div>
+			        <div class="col-xs-12 col-md-3">
+			         	<div class="box box-border">
+			         		<h2>Box Border</h2>
+			         		<p>
+			         			A este contenedor le añadimos la clase <strong> box-border</strong>
+			         		</p>
+			         	</div>
+			        </div>
+			        <div class="col-xs-12 col-md-3">
+			         	<div class="box box-border box-rounded-corners">
+			         		<h2>Box Esquinas redondeadas</h2>
+			         		<p>
+			         			A este contenedor le añadimos la clase <strong> box-rounded-corners</strong>
+			         		</p>
+			         	</div>
+			        </div>
+			        <div class="col-xs-12 col-md-3">
+			         	<div class="box box-shadow">
+			         		<h2>Box Esquinas redondeadas</h2>
+			         		<p>
+			         			A este contenedor le añadimos la clase <strong> box-shadow</strong>
+			         		</p>
+			         	</div>
+			        </div>
+			        <div class="clearfix visible-lg visible-md"></div>
+			        <div class="col-xs-12 col-md-3">
+			         	<div class="box box-border box-transparent">
+			         		<h2>Box Fondo Transparente</h2>
+			         		<p>
+			         			A este contenedor le añadimos la clase <strong> box-transparent</strong>
+			         		</p>
+			         	</div>
+			        </div>
+			        <div class="col-xs-12 col-md-3">
+			         	<div class="box box-lime">
+			         		<h2>Box color de fondo</h2>
+			         		<p>
+			         			Esta clase cambia el color de fondo del bloque. Clase: <strong> box-<i>color</i></strong> Ejemplo: box-lime
+			         		</p>
+			         	</div>
+			        </div>
+			        <div class="col-xs-12 col-md-3">
+			         	<div class="box box-header-primary">
+			         		<h2>Encabezado de Color</h2>
+			         		<p>
+			         			Esta clase pone color de fondo al encabezado. La clase: <strong> box-header-<i>color</i></strong> Ejemplo: box-header-primary
+			         		</p>
+			         	</div>
+			        </div>
+			        <div class="col-xs-12 col-md-3">
+			         	<div class="box box-transparent box-shadow box-rounded-corners bg-blue">
+			         		<h2>Otros estilos</h2>
+			         		<p>
+			         			Esta la clase que personaliza el bloque de enuestas. Clase: <strong> box-poll</strong> y el bloque de enlaces <strong> box-links</strong
+			         		</p>
+			         	</div>
+			        </div>
+		        </div>
+	      	</div>
+			<!-- end alerts -->
+			<!-- Bloques  -->
+      		<div class="example">
+		        <h2 class="example-title">Personalización de bloques</h2>
+		        <div class="row">
+		       		 <!-- Animaciones Bloques -->
+			        <div class="col-xs-12 col-md-6">
+			        	<h2 class="example-title">
+			          	Animaciones a Imágenes
+			          	<small>
+			          		Bloque Dinámico
+			          	</small>
+			          </h2>
+			          <p>
+			          	Permite hacer diferentes animaciones a las imágenes en el estado hover. Las animaciones son:
+			          </p>
+			          <ul>
+			          	<li>
+			          		<a href="http://alcaldia.nexura-egov.com/#turismo">
+			          			Efecto de escalar y girar
+			          		</a> <strong>overlay-spin</strong>
+			          	</li>
+			          	<li>
+			          		<a href="http://alcaldia.nexura-egov.com/#novedades">
+			          			Efecto de escalar
+			          		</a>  <strong>overlay-scale-img</strong>
+			          	</li>
+			          	<li>
+			          		<a href="http://alcaldia.nexura-egov.com/#turismo">
+			          			Efecto en los bordes:
+			          		</a> 
+			          		 <strong>overlay-border-color</strong>
+			          	</li>
+			          </ul>
+			        </div>
+			        <!-- Animaciones Bloques -->
+		        	<!-- Bloque de Iconos -->
+		        	<div class="col-xs-12 col-md-6">
+			        	<h2 class="example-title">
+			          	Bloque de iconos
+			          	<small>
+			          		Bloque Dinámico
+			          	</small>
+			          </h2>
+			          <p>
+			          	Personaliza el bloque dinámico y mejora la visualización de los iconos con sus respectivos titulos. Cada sección en el portal toma como base esta clase y personaliza sus colores o presentaciones. La clase es <strong>block-icon</strong>. El ejemplo es el bloque de iconos en la <a href="http://alcaldia.nexura-egov.com/#tramites-servicios">sección tramites en macondo</a>
+			          </p>
+			        </div>
+			      	<!-- End Bloque de Iconos -->
+			      	<div class="clearfix visible-md visible-lg" ></div>
+			        <!-- Contenido Editor de texto -->
+			        <div class="col-xs-12 col-md-6">
+			        	<h2 class="example-title">
+			          	Contenido Editor
+			          	<small>
+			          		Bloque Editor de Texto
+			          	</small>
+			          </h2>
+			          <p>
+			          	Estandariza en todo el portal el contenido del editor. Cada sección en el portal toma como base esta clase y personaliza sus colores o presentaciones. La clase es <strong>content-block</strong>. El ejemplo es la <a href="http://alcaldia.nexura-egov.com/#turismo">sección turismo en macondo</a> o <a href="http://alcaldia.nexura-egov.com/#footer">en el footer</a> 
+			          </p>
+			        </div>			        
+			        <!-- End Contenido Editor de texto -->
+					<!-- Grupo de botones -->
+			        <div class="col-xs-12 col-md-6">
+			        	<h2 class="example-title">
+			          	Grupo de botones inline y list
+			          	<small>
+			          		Bloque Dinámico
+			          	</small>
+			          </h2>
+
+			          <p>
+			          	Grupo de botones en posicion horizontal (inline) y vertical (lista). Cada sección en el portal toma como base esta clase y personaliza sus colores o presentaciones. Las clases son <strong>btn-group-inline</strong> y <strong>btn-group-list</strong>. El ejemplo es el bloque de iconos en la <a href="http://alcaldia.nexura-egov.com/#turismo">sección turismo en macondo</a>
+			          </p>
+			        </div>
+			        <!-- End Grupo de botones -->
+			        <div class="clearfix visible-md visible-lg" ></div>
+			        <!-- Listado de enlaces  -->
+			        <div class="col-xs-12 col-md-6">
+			        	<h2 class="example-title">
+			          	Listado de enlaces
+			          	<small>
+			          		Bloque Enlaces Generales
+			          	</small>
+			          </h2>
+			          <p>
+			          	Ajusta el listado de enlaces de forma horizontal (inlines) o vertical del <i>bloque enlaces generales</i>. La clase es <strong>list-vertical</strong> posición vertical y <strong>list-inline</strong> posición horizontal. Sí desea eliminar viñeta puede agregar <strong>list-unstyled</strong>
+			          </p>
+			          <p class="text-center">El ejemplo se puede ver en la sección de <a href="http://alcaldia.nexura-egov.com/#planes-resultados">planes y resultados</a></p>
+			        </div>
+			        <!-- End Listado de enlaces  -->
+			        <!-- Menú Laterales -->
+			        <div class="col-xs-12 col-md-6">
+			        	<h2 class="example-title">
+			          	Menú laterales fijos
+			          	<small>
+			          		Bloque Dinámico
+			          	</small>
+			          </h2>
+			          <p>
+			          	Son menús de iconos laterales. La clase para volver un bloque dinámico en menu lateral es <strong>menu-float-sidebar</strong>. Si desea que sea fijo es <strong>menu-float-fixed</strong>. Ver solo el icono <strong>menu-only-icon</strong>. Ver ejemplo en Macondo, <a href="http://alcaldia.nexura-egov.com">sección de feedback</a>.
+			          </p>
+			          <p>
+			          	Para posicionar el bloque es asi:
+			          </p>
+			          <ul>
+			          	<li>
+			          		Arriba: <strong>menu-float-top</strong>
+			          	</li>
+			          	<li>
+			          		Abajo: <strong>menu-float-bottom</strong>
+			          	</li>
+			          	<li>
+			          		Centrado vertical: <strong>menu-float-middle</strong>
+			          	</li>
+			          	<li>
+			          		Centrado derecha: <strong>menu-float-right</strong>
+			          	</li>
+			          	<li>
+			          		Centrado izquierda: <strong>menu-float-left</strong>
+			          	</li>
+			          </ul>
+			        </div>
+			        <!-- End Menú Laterales -->
+			        <div class="clearfix visible-md visible-lg" ></div>
+			         <!-- Padding  -->
+			        <div class="col-xs-12 col-md-6">
+			        	<h2 class="example-title">
+			          	Padding
+			          	<small>
+			          		Cualquier bloque
+			          	</small>
+			          </h2>
+			          <p>
+			          	Los bloques en Nexura 7 tienen padding por defecto. Esta etiqueta permite editar el padding. Las clases son:
+			          </p>
+			          <ul>
+			          	<li>
+			          		No padding: <strong>no-padding</strong>
+			          	</li>
+			          	<li>
+			          		No padding superior e inferior: <strong>no-padding-top-bottom</strong>
+			          	</li>
+			          	<li>
+			          		No padding laterales: <strong>menu-float-left-right</strong>
+			          	</li>
+			          	<li>
+			          		Padding superior e inferior 1em (16px): <strong>padding-top-bottom-1x</strong>
+			          	</li>
+			          	<li>
+			          		Padding laterales 1em(16px): <strong>padding-left-right-1x</strong>
+			          	</li>
+			          </ul>
+			        </div>
+			        <!-- End Padding  -->
+			         <!-- Solo iconos -->
+			        <div class="col-xs-12 col-md-6">
+			        	<h2 class="example-title">
+			          	Solo iconos
+			          	<small>
+			          		Bloque Dinámico
+			          	</small>
+			          </h2>
+			          <p>
+			          	Personaliza este bloque y elimina la etiqueta del título. La clase es <strong>only-icon</strong>
+			          </p>
+			        </div>
+			        <!-- End Solo iconos -->
+			        <div class="clearfix visible-md visible-lg" ></div>
+			         <!-- Tabs -->
+			        <div class="col-xs-12 col-md-6">
+			        	<h2 class="example-title">
+			          	Tabs
+			          	<small>
+			          		Bloque Tabs
+			          	</small>
+			          </h2>
+			          <p>
+			          	Personaliza este bloque, simplifica el diseño. Cada sección donde se llama esta clase, la personaliza en cuanto a colores. La clase es <strong>tab-general</strong>
+			          </p>
+			        </div>
+			        <!-- End Tabs -->
+			         <!-- Title Zone -->
+			        <div class="col-xs-12 col-md-6">
+			        	<h2 class="example-title">
+			          	Título Zonas
+			          	<small>
+			          		Bloques Zonas
+			          	</small>
+			          </h2>
+			          <p>
+			          	Esta clase modifica las etiquetas H2 y H3 de los títulos de cada una de las secciones, se debe aplicar al bloque. Cada zona toma como referencia esta clase y aplica sus propios colores a esta clase. La clase es <strong>title-zone</strong>
+			          </p>
+			        </div>
+			        <!-- End Title Zone -->
+		        </div>
+	     	</div>
+	     	<!-- End Bloques -->
+      	</div>
+      	<!-- end col-xs-12 -->
+	</div>
+</div>
+
+	
+<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js" integrity="sha384-Tc5IQib027qvyjSMfHjOMaLkfuWVxZxUPnCJA7l2mCWNIpG9mGCD8wGNIcPD7Txa" crossorigin="anonymous"></script>
+</body>
+</html>

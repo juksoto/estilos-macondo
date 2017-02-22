@@ -1,0 +1,2589 @@
+@import "nib"
+
+/*
+* Import fonts
+*/
+@import url('https://fonts.googleapis.com/css?family=Roboto+Condensed:300,400|Roboto:300,400,700');
+
+/*
+* We declare the fonts for the headers, the content, the main font and the secondary font.
+*/
+
+fontForHeaders()
+	font-family: 'Roboto Condensed', 'Roboto', Arial, sans-serif;
+	font-weight lighter
+
+fontForContent()
+	font-family: 'Roboto', Arial, sans-serif;
+	font-weight 500
+
+fontMain()
+	font-family: 'Roboto Condensed', 'Roboto', Arial, sans-serif;
+
+fontSecondary()
+	font-family: 'Roboto', Arial, sans-serif;
+	font-weight 500
+
+// Parameters
+
+	// Font Size Body
+	fontSize 		= 16px
+
+	//Color Web Entitie
+	colorPrimary 	= #C84F3B
+	colorSecondary 	= #656D78
+	
+	// Other colours
+	colorAmber 		= #B23600
+	colorBlue 		= #1F4788
+	colorGrass 		= #B8C91A
+	colorGrassDark  = #8CC152
+	colorPurple 	= #6A006F
+	colorRed 		= #A62935
+	colorYellow 	= #FFCC0A
+	 	
+	// scale gray
+	colorGrayDark 	= #434A54
+	colorGrayMedium = #AAB2BD
+	colorGrayLigth 	= #EFEFEF
+		
+	// Zone Colours
+	colorZoneThree 	= colorRed
+	colorZoneFour 	= colorYellow
+	colorZoneFive 	= colorAmber
+	colorZoneSix 	= colorGrass
+	colorZoneSeven 	= colorBlue
+	
+	// Colores para generar los background color, botones, border-color, entre otros
+	colors = {
+		amber: #B23600
+		black: black
+		blue: #1F4788
+		grass-dark : #8CC152
+		grass: #B8C91A
+		gray-dark: #434A54
+		gray-light: #EFEFEF
+		gray-medium: #AAB2BD
+		primary: colorPrimary 
+		purple: #6A006F
+		red: #A62935
+		white: white
+		yellow: #FFCC0A
+		zone-five: colorZoneFive
+		zone-four: colorZoneFour
+		zone-seven: colorZoneSeven
+		zone-six: colorZoneSix
+		zone-three: colorZoneThree
+	}
+			
+	// color links
+	colorLink 			= colorPrimary
+	colorLinkHover 		= colorSecondary
+	colorLinkVisited	= colorPurple
+	
+	colorSelection 		= white
+	bgSelection 		= colorPrimary
+	
+	// Parameters tag a
+	textDecorationLink 			= none
+	textDecorationLinkHover 	= none
+	textTransformLink 			= initial
+	
+	// Parameters class .btn
+	bgBtn 				= colorPrimary
+	bgBtnHover 			= colorSecondary
+	colorBtn 			= white
+	colorBtnHover		= white
+	textTransformBtn 	= uppercase
+	btnPadding 			= 0.2em 0.5em;
+	
+	// btn default boostrap - default is true
+	modifyBtnDefault 	= true
+	bgBtnDefault 		= colorPrimary
+	bgBtnDefaultHover 	= colorSecondary
+	colorBtnDefault 	= white
+
+
+	// Procesa si el color es oscuro o claro y genera el contraste
+	isDarkoLigth(color)
+		if luminosity(color) >= .5
+			return colorGrayDark
+		else
+			return white
+	// Hacer un color % mas oscuro o claro
+	doDark(color)
+		return darken(color, 20%)
+	doLight(color)
+		return lighten(color, 20%)
+/*
+* General Tags
+* [description] Tags y clases generales con relacion al framework css
+*/
+
+a
+	color colorLink
+	text-decoration textDecorationLink
+	text-transform textTransformLink
+	&:hover
+		color colorLinkHover
+		text-decoration textDecorationLinkHover
+	&:visited
+		color colorLinkVisited
+		
+body
+	font-size fontSize
+	fontForContent()
+	overflow-x hidden
+
+h1, h2, h3,h4, h5, h6
+	fontForHeaders()
+
+::selection
+	background bgSelection
+	color colorSelection
+// Si desean modificar elbtn default de boostrap
+if modifyBtnDefault
+	.btn-default
+		background 		bgBtnDefault
+		color 			colorBtnDefault
+		&:hover
+			background bgBtnDefault
+
+.btn
+	background 		bgBtn
+	border 			0
+	color 			colorBtn
+	padding 		btnPadding
+	text-transform 	textTransformBtn
+	transition all .25s ease-in-out
+	&:hover
+		background bgBtnHover
+		border 0
+		color colorBtnHover 
+		transition all .25s ease-in-out
+	&:visited
+		color white
+
+// Boton con fondo transparente y border 
+.c-btn
+	background 		transparent
+	border 			1px solid colorPrimary
+	color 			colorPrimary
+	padding 		btnPadding
+	text-transform 	textTransformBtn
+	transition all .25s ease-in-out
+	&:hover, &.active
+		background colorPrimary
+		cFont = isDarkoLigth(colorPrimary)
+		color cFont
+		border 0
+		transition all .25s ease-in-out
+	&:visited
+		color white
+
+.pull-center
+	float none !important
+	margin 0 auto
+	
+.versionPlatform, .copyright-nexura
+	display none
+
+/** Font Awesome */
+fontAwesome()
+	-webkit-font-smoothing antialiased
+	display inlin-block
+	font normal normal normal 14px/1 FontAwesome
+	font-size inherit
+	margin-right 0.3em
+/* end font Awesome */
+/*
+* Custom CSS 
+* [description] CSS personalizado para mejorar el framework
+*/
+
+
+/**
+* Align tipography responsive
+*/
+
+@media (min-width: 0px)
+	.text-xs-left  
+		text-align left 
+	.text-xs-right  
+		text-align right 
+	.text-xs-center  
+		text-align center 
+	.text-xs-justify  
+		text-align justify 
+
+@media (min-width: 768px) 
+	.text-sm-left  
+		text-align left 
+	.text-sm-right  
+		text-align right 
+	.text-sm-center  
+		text-align center 
+	.text-sm-justify  
+		text-align justify 
+
+@media (min-width: 992px) 
+	.text-md-left  
+		text-align left 
+	.text-md-right  
+		text-align right 
+	.text-md-center  
+		text-align center 
+	.text-md-justify  
+		text-align justify 
+
+@media (min-width: 1200px) 
+	.text-lg-left  
+		text-align left 
+	.text-lg-right  
+		text-align right 
+	.text-lg-center  
+		text-align center 
+	.text-lg-justify  
+		text-align justify 
+/**
+* End Align tipography responsive
+*/
+
+
+/* Bloque de iconos y titulo */
+.block-icon
+	.item
+		a
+			margin 0 auto
+			min-height 8.75em
+			min-width 8.5em
+			padding 0.8em 0.6em
+			transition all .25s ease-in
+			width 8.5em
+			.title
+				color colorLinkHover
+				font-size 1em
+				font-weight 400 !important
+				fontMain()
+				margin 0
+				text-transform uppercase
+				width auto
+			.mediaPosition
+				border-radius 0
+				color colorLink
+				font-size 3.5em
+				height 1.375em
+				line-height 1
+				min-height 1.375em
+				width auto
+			&:hover
+				background colorLink
+				transition all .25s ease-in
+				.title
+					color white
+				.mediaPosition
+					background transparent
+					color white
+	.slick-prev, .defaultDynamic .slick-prev
+		left 0
+	.slick-next, .defaultDynamic .slick-next
+		right 0
+	.slick-prev:hover, .slick-next:hover, .slick-prev:focus, .slick-next:focus
+		background colorPrimary
+				
+/* end bloque de iconos */
+/* Background Hover */
+bgColor(bgColor)
+	background bgColor !important
+	cFont = isDarkoLigth(color)
+	border-color cFont !important
+	color cFont !important
+
+for name, color in colors
+	.bg-{name}
+		bgColor(color)
+			
+    
+/* end background Hover */
+/* Background Hover */
+bgHoverColor(bgColor)
+	background bgColor !important
+	cFont = isDarkoLigth(color)
+	border-color cFont !important
+	color cFont !important
+
+for name, color in colors
+	.bg-hover-{name}
+		&:hover
+			bgHoverColor(color)
+/* end background Hover */
+
+
+/* Color Border */
+borderColor(colorBorder)
+	border-color colorBorder !important
+
+for name, color in colors
+	.border-color-{name}
+		borderColor(color)
+				
+/* end color border */
+
+/* Grupo de botones */
+.btn-group-inline
+	.slick-slide
+		.item
+			a
+				background transparent
+				border 2px solid colorPrimary
+				color colorPrimary
+				display inline-block
+				line-height 1
+				padding 0.1em 2em
+				transition all .25s ease-in-out
+				.title
+					color colorLink
+					display inline-block
+					font-weight 100
+					fontMain()
+					height auto
+					margin 0
+					width auto
+					margin-top 3px
+				.mediaPosition
+					border-radius 0
+					color colorLink
+					display inline-block
+					font-size 1.1em
+					height auto
+					margin 0
+					margin-right 0.3em
+					width auto
+				&:hover
+					background colorLink
+					transition all .25s ease-in-out
+					.title
+						color white
+					.mediaPosition
+						background transparent
+						border-radius 0
+						color white
+.btn-group-list
+	.slick-slide
+		.item
+			a
+				background transparent
+				border 2px solid colorPrimary
+				color colorPrimary
+				display inline-block
+				line-height 1
+				margin 0.4em 0.2em
+				padding 0.1em 2em
+				transition all .25s ease-in-out
+				.title
+					color colorLink
+					display inline-block
+					font-weight 100
+					fontMain()
+					height auto
+					margin 0
+					width auto
+					margin-top 3px
+				.mediaPosition
+					border-radius 0
+					color colorLink
+					display inline-block
+					font-size 1.1em
+					height auto
+					margin 0
+					margin-right 0.3em
+					width auto
+				&:hover
+					background colorLink
+					transition all .25s ease-in-out
+					.title
+						color white
+					.mediaPosition
+						background transparent
+						border-radius 0
+						color white						
+							 
+/* end grupo de botones en linea
+
+/* Color btn */
+btnColor(bgColor)
+	background bgColor
+	cFont = isDarkoLigth(color)
+	color cFont
+	&:hover
+		background colorGrayDark
+		color white
+
+for name, color in colors
+	.btn-{name}
+		btnColor(color)
+
+/*end color btn */
+/* Boxes color */
+
+.box
+	padding 1em
+	.btn
+		margin 0.2em 
+	h2
+		margin-bottom 0.3em
+		.nxBlockTitle
+			font-size 0.8em
+.box-border
+	border-width 1px 
+	border-style solid
+.box-rounded-corners
+	border-radius 0.5em
+.box-shadow
+	box-shadow 0 0 0 1px rgba(0,0,0,0.06), 0 4px 10px rgba(0,0,0,0.06)
+.box-transparent
+	background transparent
+.box-poll
+	float none
+	fieldset
+		margin-top 0.5em
+	legend 
+		display none
+	.encuestaBloqueResultado
+		text-align center
+.box-links
+	a
+		background transparent
+		color colorGrayDark
+		&:hover, &:focus
+			background-color colorPrimary !important
+			color white !important
+		span.fa
+			display none
+	
+	li.active > a
+		background-color colorPrimary !important
+		color white !important
+		
+boxHeaderColor(color)
+	background white !important
+	border-color colorGrayLigth
+	color colorGrayDark
+	cFont = isDarkoLigth(color)
+	a
+		cFont = doDark(color)
+		color cFont
+	h2
+		background color
+		margin -0.4em
+		margin-bottom 0.5em
+		padding 0 0.3em 0.3em 0.4em
+		text-align inherit
+		.nxBlockTitle
+			color cFont
+			font-size 0.6em
+	.btn
+		background color
+		cFont = isDarkoLigth(color)
+		color cFont
+		&:hover
+			bgColor = doDark(color)
+			background bgColor
+
+for name, color in colors
+	.box-header-{name}
+		boxHeaderColor(color)
+		
+boxColor(color)
+	background color !important
+	cFont = isDarkoLigth(color)
+	cDark = doDark(color)
+	border-color cDark
+	color cFont
+	a
+		color cFont
+	.nxBlockTitle, legend
+		color cFont
+	.btn
+		bgColor = doDark(color)
+		background bgColor
+		cFont = isDarkoLigth(bgColor)
+		color cFont
+		&:hover
+			bgColor = doDark(color)
+			background bgColor
+			
+for name, color in colors
+	.box-{name}
+		boxColor(color)
+
+/* End Boxes color */			
+
+
+/*Editor de texto*/
+.content-block
+	p
+		color colorGrayDark
+		font-size 1.1em
+		line-height 1.5
+	a
+		background transparent
+		color colorLink
+		&:hover
+			background transparent
+			color colorLinkHover
+/* end Editor de Texto*/
+
+
+	
+// Content Columns
+.content-3-col
+	column-count 3
+	column-fill balance
+	column-gap 10px
+@media (min-width:768px )
+	.content-3-col-md
+		column-count 3
+		column-fill balance
+		column-gap 10px
+
+// end Content Columns
+
+/*font color*/
+for name, color in colors
+	.font-{name}
+		color color !important
+
+for name, color in colors
+	.font-link-{name}
+		a
+			color color !important
+			&:hover, &:focus
+				background-color color !important
+				fontColor = isDarkoLigth(color)
+				color fontColor !important
+		li.active > a
+			background-color color !important
+			fontColor = isDarkoLigth(color)
+			color fontColor !important
+		 	
+/* end font colors */
+
+// Iconos Menu float //
+.menu-float-sidebar
+		position absolute
+		.slick-track
+			width auto !important
+		.slick-slide
+			display block
+			float inherit
+			margin 1em 0
+			width 250px !important
+		.item
+			border 0
+			display block !important
+			width auto !important
+			.fa
+				margin 0
+			a
+				background colorRed
+				border 0
+				border-radius 50%
+				color colorRed
+				display inline-block
+				height 3.125em
+				margin 0.2em 0
+				padding 0.45em
+				position relative
+				width 3.125em
+				.mediaPosition
+					color white
+					font-size 1.8em
+					margin-top 0.1em
+					height auto
+					line-height 1
+					width auto
+					transition all .25s ease-in-out
+				.title 
+					background colorGrayDark
+					color white
+					display block
+					font-size 1.05em
+					font-weight 500
+					fontMain()
+					display none
+					position absolute
+					text-align center
+					top -7px
+					transition opacity .25s ease-in-out
+				&:hover
+					background colorRed
+					color white
+					.title
+						color white
+						height auto
+						display block
+						padding 0.5em
+						transition all .25s ease-in-out
+					.mediaPosition
+						background transparent
+						border-radius 0
+						transform scale(1.1)
+						transition all .25s ease-in-out
+.menu-float-fixed
+		position fixed
+.menu-float-top
+	top 20%
+.menu-float-bottom
+	bottom 0%	
+.menu-float-middle
+	top 40%
+.menu-float-right
+	right 0.625em
+	.title
+		right 3.3125em
+		text-align right
+		width 9.375em !important
+	a
+		float right
+.menu-float-left
+	margin-left 5% 
+	left 0
+	.title
+		left 3.3125em
+		text-align left
+		width 10.625em !important
+	a
+		float left
+.menu-float-left-content
+	left 0
+	top 8%
+	margin-left -8%
+
+.menu-only-icon	
+	.item a:hover .title
+		display none
+// End Iconos float //
+
+/** Bloques de enlaces */
+ // - Listado Vertical BLoque Enlaces
+.list-vertical
+	a
+		color colorLink
+		display block
+		padding 0.2em 0
+		transition all .25s ease-in-out
+		&:before
+			content "\f111"
+			fontAwesome()
+			font-size 7px
+			margin-right 1em
+		&:hover
+			color colorLinkHover
+			transition all .25s ease-in-out
+			
+.list-inline
+	a
+		color colorLink
+		display inline-block
+		padding 0 0.5em
+		transition all .25s ease-in-out
+		position relative
+		&:before
+			content "\f111"
+			font-size 7px
+			fontAwesome()
+			left 0
+			position absolute
+			top 7px
+			font-size 8px
+		&:hover
+			color colorLinkHover
+			transition all .25s ease-in-out
+
+.list-unstyled
+	a:before
+		content ""
+				
+/** Bloques de enlaces */
+	
+// No Padding
+.no-padding
+	padding 0
+.no-padding-top-bottom
+	padding-bottom 0
+	padding-top 0
+.no-padding-left-right
+	padding-left 0
+	padding-right 0
+.no-bg-block
+	background transparent	
+.padding-top-bottom-1x
+	padding 1em 0
+.padding-left-right-1x
+	padding 0 1em
+	
+/* centered columns styles */
+.row-centered
+	text-align center
+.col-centered
+	display inline-block
+	float none
+	/* inline-block space fix */
+	margin-right -4px
+.col-fixed
+    /* custom width */
+	width 320px
+.col-min
+    /* custom min width */
+	min-width 320px
+.col-max
+    /* custom max width */
+	max-width 320px
+/* end centered column styles */
+
+
+/* Solo iconos*/
+.only-icon
+	.item
+		a
+			.title
+				display none
+			.mediaPosition
+				color colorLink
+				font-size 2em
+				transition all .25s ease-in
+			&:hover
+				.mediaPosition
+					background transparent
+					color white
+					border-radius 0
+					transition all .25s ease-in
+					
+/* end Solo iconos*/
+
+.overlay
+	background rgba(black, 0.5)
+	min-height 550px
+	position absolute
+	left 0
+	top 0
+	width 100%
+	height 100%
+
+/** Animaciones Bloque Dinamico */
+.overlay-spin
+	.item
+		a
+			.image
+				img
+					transform scale(1) rotate (0deg)
+					transition all .25s ease-in-out
+			.rollover-box
+				top 0
+				opacity 0
+				transition all .25s ease-in-out
+			&:hover 
+				.image 
+					img
+						transform scale(1.1) rotate(3deg)
+						transition all .25s ease-in-out
+					&:after, &:before
+						content ""
+						background transparent
+				.rollover-box
+					background rgba(black, 0.4)
+					color white
+					opacity 1
+					top 0
+					transition all .25s ease-in-out
+.overlay-scale-img
+	a
+		.image
+			img
+				transform scale(1)
+				transition all .25s ease-in-out
+		.rollover-box
+				top 0
+				opacity 0
+				transition all .25s ease-in-out
+		&:hover	
+			.image
+				img
+					transform scale(1.1)
+					transition all .25s ease-in-out
+				&:after, &:before
+					content ""
+					background transparent
+			.rollover-box
+				background rgba(black, 0.4)
+				color white
+				opacity 1
+				top 0
+				transition all .25s ease-in-out
+.overlay-border-color
+	.slick-slide
+		.item
+			a
+				.image
+					border 3px solid transparent
+					transition all .25s ease-in-out
+				.title
+					transition all .25s ease-in-out
+			&:hover 
+				.title
+					color colorLink
+					transition all .25s ease-in-out
+				.image
+					border 3px solid colorLink
+					transition all .25s ease-in-out
+					&:after, &:before
+						content ""
+						background transparent
+						
+/** end Animaciones Bloque Dinamico */
+/* Tabs */
+.tab-general
+	.ui-tabs .ui-tabs-nav 
+		text-align center
+		li
+			border 0
+			display inline-block
+			font-size 0.9em
+			float none
+			a.ui-tabs-anchor
+				padding 0.3em 0.6em
+				font-weight 500
+				transition all .25s ease-in
+				&:hover
+					background colorLink
+					color white
+					transition all .25s ease-out
+	.ui-tabs-active
+		border 0
+		a
+			background colorLink
+			color white
+			
+	.ui-widget-content
+			background transparent
+		.ui-tabs-active
+			border 0
+			a
+				background colorLink
+				color white
+		.ui-tabs-panel
+			padding 0
+				
+/* end tabs */
+
+/* Title Zone*/
+.title-zone
+		h2 
+			display inline-block
+			margin 0
+			min-height 30px
+			min-width 200px
+			padding 0 0.5em
+			position relative
+			text-transform uppercase
+			span
+				color colorGrayDark
+				display inline-block
+				font-size 0.6em
+				font-weight 500
+				margin 0
+				padding 0
+		h3
+			color colorPrimary
+			display block
+			font-size 2.1em
+			margin 0
+			margin-top -5px
+			padding 0.4em 0.3em
+			a
+				color white
+				&:visited
+					color white
+
+/*	
+* Web Layouts
+* [description] Escribimos el CSS de nuestro portal
+*/
+
+// Clases generales
+.link-next-section 
+	bottom 0
+	left 50%
+	margin-left -50px
+	position absolute
+	.slick-track, .slick-slide
+		min-width 70px
+	.item
+		a
+			display block
+			height 60px
+			.mediaPosition
+				font-size 2.4em
+				display block
+			&:hover
+				.mediaPosition
+					animation aTopBottom 1s infinite
+					background transparent
+					border-radius 0
+					font-size 2.4em
+	&.nxBlockDesign1 
+		a .mediaPosition
+			color white
+	&.nxBlockDesign2
+		a .mediaPosition
+			color black
+			
+@keyframes aTopBottom {
+  0% {
+	padding-top 0
+  }
+  50% {
+	padding-top 10px
+  }
+  100% {
+	padding-top 0
+  }
+}
+
+// end clases generales
+
+// header
+header
+	background white
+	position relative
+	z-index 5
+	h1, .nameEntitie
+		display none
+	&.navbar-fixed-top
+		background rgba(white, 0.95)
+	.escudo-img
+		margin-top 0
+		max-width 80px
+	.logo img
+		max-width 210px
+	nav.navbar 
+		background-color inherit !important
+		border 0 !important
+		margin 0
+		&.nxBlock
+			padding 1em
+		.megamenu
+			> li
+				position static
+				a
+					border-radius 4px
+					font-size 1.1em
+					fontMain()
+					padding 0.3em 0.7em
+					&:hover
+						background colorPrimary
+						color white
+				&.item-home
+					background white
+					border-radius 50%
+					font-size 20px
+					height 35px
+					margin-top -3px
+					padding 7px
+					text-align center
+					width 35px
+					&:hover
+						background colorPrimary
+						a
+							background-color transparent !important
+						&:before
+							color white
+					a
+						border-radius 50%
+						display block
+						height 35px
+						margin-left -7px
+						margin-top -27px
+						text-indent -9999px
+						width 35px
+				&.btn-o
+					a
+						border 1px solid colorPrimary
+						color colorPrimary
+				.dropdown-menu
+					padding 0.5em
+					a
+						break-inside avoid-column
+						color colorGrayDark
+						display block
+						font-size 1.1em
+						font-weight lighter
+						strong
+							font-weight lighter
+						&.collapseMenu
+							color colorLink
+							cursor default
+							font-size 1.2em
+							font-weight 600
+							padding-left 0
+						&:hover
+							color white
+					.nxBlock
+						padding 0
+					ul
+						list-style none
+						padding 0
+						padding-left 0.4em
+			.row.megamenuContenedorPrincipal 
+				column-count 3
+				column-gap auto
+				column-width auto
+			.panel-menu
+				display block
+				float none
+				width 100%
+					
+	.menu-guia
+		#menu-guia
+			background colorGrayLigth
+			padding 0.5em
+		.contentConfig
+			text-align right
+			a
+				color colorLink
+				display inline-block
+				&:hover
+					color colorLinkHover
+			.dropdown
+				display inline-block
+				ul
+					min-width 100px
+					.dropdown-menu
+						a
+							display block
+							width 100%
+			.btn-default
+				background transparent
+				border 1px solid colorPrimary
+				color colorPrimary
+				margin 0 1em
+				padding 0.2em 1em
+		.contentLinkToolsHidden
+			display none
+		.contentBtnConfigTools
+			display inline-block
+		.contentIconConfigFont
+			display inline-block
+			.fa
+				font-size 1em	
+			.fa-2x
+				font-size 1.5em
+			.fa-3x
+				font-size 1.9em
+	.toolbar-menu-top
+		margin-bottom -0.5em
+		.slick-track
+			width 100% !important
+		.slick-slide
+			display inline-block !important
+			float inherit
+			text-align right
+			width auto !important
+			.item 
+				display inline-block
+				height auto
+				margin 0 0.2em
+				width auto !important
+				a
+					.mediaPosition
+						color colorGrayDark
+						font-size 1.3em
+						height 25px
+						height auto
+						line-height 1.3
+						width 25px
+					&:hover .mediaPosition
+						background transparent !important
+						color colorLinkHover
+				.title
+					display none		
+
+@media (max-width: 1200px )
+	header 
+		nav
+			.megamenu
+				> li
+					a
+						font-size 1em
+						padding 0.3em 0.4em
+
+@media (max-width: 992px )
+	header 
+		nav.navbar.nxBlock
+			padding 0
+			
+@media (max-width: 800px )
+	header 
+		nav.navbar
+			.megamenu
+				.dropdown-menu
+					padding 1.1em
+					
+@media (max-width: 785px )
+	header 
+		nav.navbar
+			&.nxBlock
+				padding 1em
+				.row.megamenuContenedorPrincipal 
+					column-count inherit
+					column-gap inherit
+					column-width inherit
+				.panel-menu
+					text-align center
+					.nxBlockEnlaces 
+						background colorGrayLigth
+						a
+							color colorGrayDark
+							
+@media (min-width: 767px )
+	header 
+		.dropdown-menu
+			a.collapseMenu
+				&:hover
+					background transparent !important
+					color colorLink !important
+						
+@media (max-width: 767px )
+	header 
+		nav.navbar
+			margin 0
+			.megamenu
+				margin 0
+				> li
+					a
+						text-align center
+					&.item-home
+						border-radius 0
+						height auto
+						margin 0 !important
+						text-indent 0
+						width 100%
+						padding 0
+						&:before
+							content " "
+						a
+							text-align center
+							display block
+							height auto
+							border-radius 0
+							margin 0 auto
+							text-indent 0
+							width 100%
+							font-size 0.8em
+			.dropdown-menu
+				padding 0.5em !important
+				min-width 100% !important
+				a.collapseMenu
+					&:hover
+						background colorPrimary !important
+						color white !important
+					.fa 
+						display none !important
+				.megamenuPublicacionesEnlace 
+					display none !important
+
+// end header	
+
+/*
+* Zone 01
+* [Title Zone] Menu Header
+*/
+
+// Zone 01 
+.wp-zone-one
+	background url(../../../media/bloque82) top center fixed
+	background-position 50% 0
+	background-repeat no-repeat
+	background-size cover
+	display block
+	height 100%
+	padding-bottom 2em
+	position relative
+	width 100%
+
+@media (max-width: 768px )
+	.wp-zone-one
+		padding-bottom 4em
+	
+// End Zone 01		
+
+	
+// Zone 02
+
+/* function for list section */
+listSectionColor(color)
+	border-color color !important
+	transition all .25s ease-in
+	&:hover
+		cFont = isDarkoLigth(color)
+		background rgba(color, 0.8) !important
+		border-color cFont !important
+		color cFont !important
+		transition all .25s ease-in
+		.title, .mediaPosition 
+			color cFont !important
+for name, color in colors
+	.list-color-{name}
+		listSectionColor(color)
+				
+/* end funcion */		
+
+/*
+* Zone 02
+* [Title Zone] Listado de enlaces
+*/
+.zone-two
+	padding-top 12%
+	.dotsDynamic li button::before, .slick-dots li button::before
+		background colorPrimary
+	.description-image-background
+		bottom 1em
+		left 1em
+		position absolute
+		.contenido1
+			color white
+		.contenido2
+			color black
+		.contenido3
+			background rgba(black, 0.8)
+			padding 0.2em 0.5em
+			color white
+			
+	.list-section
+		margin-top 1.1em;
+		.slick-slide
+			margin 0 0.16em
+		.item
+			a
+				background rgba(black, 0.5)
+				border-bottom 6px solid colorPrimary
+				color white
+				height 10em
+				max-height 10em
+				.mediaPosition
+					color white
+					font-size 3.5em 
+					height auto
+					width auto
+				.title
+					color white
+					margin 0
+					font-weight 400
+				&:hover
+					.mediaPosition
+						background transparent
+	.search-form
+		.btn
+			padding 10px	
+
+
+// End Zone 02
+
+/*
+* Zone 03
+* [Title Zone] Tramites y Servicios
+*/
+.zone-three
+	background url('../img/bg-zona-three.jpg') left top no-repeat #fff;
+	background-position 5% -10%
+	background-size 31%
+	min-height 35em
+	padding-top 4em
+	padding-bottom 3em
+	.dotsDynamic li button::before, .slick-dots li button::before
+		background colorZoneThree		
+	.help-list
+		border 0
+		.navbar-collapse
+			border 0
+			.navbar-nav
+				float none !important
+				display block
+				li
+					display block
+					float none !important
+					a
+						color colorZoneThree
+						display block
+						font-size 1.1em
+						font-weight 500
+						transition all .25s ease-in
+						&:hover
+							background colorZoneThree
+							color white
+							transition all .25s ease-out
+					&.dropdown
+						.dropdown-menu
+							left 0
+							min-width 300px
+							position absolute
+							width 100%
+							a
+								strong
+									font-weight 100
+						.row
+							padding 0
+							margin-left 2px
+							a
+								padding 0.3em 0
+								color colorGrayDark
+								transition all .25s ease-in
+								&:hover
+									color colorZoneThree
+									background transparent
+									transition all .25s ease-in
+								&:before, &:after
+									content ""
+							div[class^='col-']
+								padding 5px 8px
+					&.icon-chat a:before
+						fontAwesome()
+						content "\f0e6"
+					&.icon-faq a:before
+						fontAwesome()
+						content "\f128"
+					&.icon-faq a:after
+						fontAwesome()
+						content "\f078"
+						float right
+						margin-right 0
+	.tab-icon-tramites
+		.nxBlockTitle
+			color colorZoneThree
+			font-weight 100
+		.ui-tabs .ui-tabs-nav 
+			li
+				font-size 0.9em
+				a.ui-tabs-anchor
+					padding 0.3em 0.5em
+					&:hover
+						background colorZoneThree
+		.ui-tabs-active
+			a
+				background colorZoneThree
+		.block-icon
+			.slick-slide
+				opacity 0
+				transition opacity .5s ease-out
+			.slick-current
+				opacity 1 !important
+				transition opacity .25s ease-in 0.3s
+			.item
+				a
+					.mediaPosition
+						color colorZoneThree
+					&:hover
+						background colorZoneThree
+						.title
+							color white
+						.mediaPosition
+							background transparent
+							color white
+			.slick-prev:hover, .slick-next:hover, .slick-prev:focus, .slick-next:focus
+				background colorZoneThree
+	.title-zone-three
+		margin-top 5em
+		
+@media (min-width:1500px)
+	.zone-three
+		background-size 35%
+		background-position-x 5%
+		
+@media (min-width:1800px)
+	.zone-three
+		background-size 30%
+		background-position-x 15%
+
+@media (max-width:1500px)
+	.zone-three
+		background-size 40%
+		background-position-x -3%
+
+@media (max-width:1300px)
+	.zone-three
+		background-size 50%
+		.title-zone-three
+			background rgba(white,0.8)
+			margin-top 11em
+		.help-list
+			background rgba(white,0.8)
+
+@media (max-width:992px)
+	.zone-three
+		background-size 65%
+		background-position-y 20%
+
+@media (max-width:768px)
+	.zone-three
+		background-size 90%
+		background-position-y 20%
+		.nav
+			li
+				padding 1em
+			.dropdown-menu
+				min-width 100% !important
+				position relative !important
+				width 100% 
+		.tab-icon-tramites
+			.block-icon
+				.slick-track, .slick-list
+					height 160px
+				.slick-current
+					padding-top 0.5em
+					height 140px !important
+					width 28% !important
+
+@media (max-width:480px)
+	.zone-three
+		.tab-icon-tramites
+			.block-icon
+				.slick-track, .slick-list
+					height 180px
+				.item
+					width 23% !important
+					a
+						min-width 90px
+						padding 0.4em 0
+						width 90px
+						.mediaPosition
+							width 80px
+						.title
+							min-width 80px
+							width 80px
+// end zone 03
+
+/*
+* Zone 04
+* [Title Zone] Planes y Resultados
+*/
+.zone-four
+	background url('../img/bg-zone-four.jpg') left top no-repeat #fff fixed;
+	background-size cover
+	min-height 35em
+	padding-top 3em
+	padding-top 4em
+	position relative
+	.btn-group-list
+		.item a
+			border-color white
+			color white
+			.title
+				color white
+			&:hover
+				background colorZoneFour
+				cFont = isDarkoLigth(colorZoneFour)
+				color cFont
+				
+	.dotsDynamic li button::before, .slick-dots li button::before
+		background colorZoneFour	
+	.title-zone-four
+		padding-top 5em
+		h2 
+			background colorZoneFour
+			transform skewX(-20deg)
+			span
+				cFont = isDarkoLigth(colorZoneFour)
+				color cFont
+				position absolute
+				top 7px
+				transform skewX(20deg)
+		h3
+			color white
+			a
+				color white
+				&:visited
+					color white
+	.list-vertical 
+		a
+			color white
+			&:hover
+				color colorZoneFour
+	.quicknotes
+		.date
+			display none
+		.description
+			color white
+			display block
+			line-height 1.5
+			margin-top 0.2em
+		.item 
+			a
+				background rgba(black,0.5)
+				border-left 6px solid colorZoneFour
+				padding 0.3em 0.5em
+				&:hover
+					.title
+						color colorZoneFour
+		.title
+			background transparent
+			color white
+			height 7.5em
+			min-height 7.5em
+			width 100%
+	.planes-news
+		a
+			max-height 17.875em
+			.image
+				height 12.5em
+				transition all .25s ease-in-out
+				img
+					height 17.5em
+					margin-left -20%
+					min-width 12.5em
+			.date 
+				display none
+			.title
+				background rgba(black,0.6)
+				border-bottom 5px solid colorZoneFour
+				color white
+				float none
+				font-size 1.1em
+				height 4.5em
+				transition all .25s ease-in-out
+				width 100%
+			&:hover	
+				.title
+					border-bottom 5px solid colorZoneFour
+					border-top 0
+					color colorZoneFour
+					transition all .25s ease-in-out
+
+body.faFontLg .zone-four .planes-news a .image img 
+	margin 0
+
+@media (max-width:1200px )
+	.zone-four
+		.planes-news
+			a
+				.title
+					font-size 1em
+
+@media (max-width:992px )
+	.zone-four
+		.planes-news
+			a
+				.title
+					font-size 1em
+					padding 0.4375em 0.625em
+					
+@media (max-width:768px )
+	.zone-four
+		.planes-news
+			a
+				.title
+					font-size 1em
+					padding 0.4375em 0.625em
+				.image img
+					margin-left 0
+					height 15.625em
+
+@media (max-width:480px )
+	.zone-four
+		.quicknotes
+			a
+				.title
+					height 8.75em
+// end zone 04
+
+/*
+* Zone 05
+* [Title Zone] Novedades
+*/
+.zone-five
+	background url('../img/bg-zone-five.jpg') #eee;
+	min-height 550px
+	padding-top 5em
+	padding-top 4em
+	.dotsDynamic li button::before, .slick-dots li button::before
+		background colorZoneFive	
+	.slider-main
+		padding-top 1em
+		.date 
+			display none
+		.title
+			background transparent
+			color colorGrayDark
+			float none
+			font-size 1.1em
+			height auto
+			width 100%
+		a
+			img
+				margin 0 auto
+			&:hover 
+				.title
+					color colorZoneFive
+				.image
+					&:after, &:before
+						content ""
+						background transparent
+	.title-zone-five
+		h2 
+			span
+				color colorGrayDark
+		h3
+			color colorZoneFive
+			padding-top 0.15em
+	.tabs-noticias-eventos
+		padding-bottom 10px
+		padding-top 0
+		.ui-tabs .ui-tabs-nav 
+			li
+				a.ui-tabs-anchor
+					font-size 1.1em
+					&:hover
+						background colorZoneFive
+						color white
+		.ui-tabs-active
+			a
+				background colorZoneFive
+				color white
+		// noticias
+		.news-tab
+			.slick-slide
+				.item
+					a
+						position relative
+						.date
+							background colorZoneFive
+							color white
+							display block
+							float none
+							height auto
+							padding 0.2em
+							position absolute
+							right 18px
+							top 99px
+							width 65px
+							.day, .month
+								display inline-block
+								font-size 0.9em
+						.image
+							height 130px
+							img
+								height 180px
+								margin-top -10%
+								min-height 180px
+								min-width 250px
+								width auto
+						.title
+							background transparent
+							font-size 0.9em
+							height auto
+							padding 0.7em 0.3em
+							width 100%
+					&:hover 
+						.title
+							color colorZoneFive
+						.image
+							border-color colorZoneFive
+							&:after, &:before
+								content ""
+								background transparent
+		.nxBlockDynamicLinks ul
+			margin 0.4em
+		.btn
+			background transparent
+			border 1px solid colorZoneFive
+			border-radius 0
+			color colorZoneFive
+			padding 0.3em 2em
+			transition all .25s ease-in
+			&:hover
+				background colorZoneFive
+				color white
+				transition all .25s ease-out
+		// Eventos
+		.events-tab
+			.slick-slide
+				.item
+					a
+						position relative
+						.date
+							background transparent
+							color colorGrayDark
+							height 100px
+							padding 10px
+							transition all .25s ease-in-out
+							width 20%
+							.day
+								font-size 1.8em
+						.image
+							border 3px solid transparent
+							height 130px
+							transition all .25s ease-in-out
+							img
+								height 180px
+								margin-top -10%
+								min-height 180px
+								min-width 250px
+								width auto
+						.title
+							background transparent
+							font-size 0.9em
+							height 100px
+							padding 10px 5px 5px 5px
+							transition all .25s ease-in-out
+							width 80%
+					&:hover 
+						.title, .date
+							color colorZoneFive
+							transition all .25s ease-in-out
+						.image
+							border 3px solid colorZoneFive
+							transition all .25s ease-in-out
+
+@media (max-width: 992px )
+	.zone-five 
+		.tabs-noticias-eventos
+			.events-tab, .news-tab 
+				.slick-slide .item a .image img
+					width 100%
+					height auto
+
+// end zone 05
+
+/*
+* Zone 06
+* [Title Zone] Turismo
+*/
+.zone-six
+	background url('../../../media/bloque635') center center no-repeat #eee fixed
+	background-size cover
+	min-height 450px
+	padding 7em 1em
+	position relative
+	.row
+		position relative
+	.overlay
+		background rgba(black, 0.7)
+	.dotsDynamic li button::before, .slick-dots li button::before
+		background colorZoneSix	
+	// header zone zone-six
+	.title-zone-six
+		color white
+		h2
+			padding 0
+			span
+				color white
+		h3
+			color colorZoneSix
+			padding 0.2em 0 0.5em 0
+	.content-block
+		p
+			font-size 1em
+			color white
+		a
+			font-size 1em
+			color white
+			&:hover
+				color colorZoneSix
+			&:visited
+				color white
+				text-decoration underline
+	.list-vertical
+		bottom 20%
+		position absolute
+		right 0
+		a
+			color white
+			&:hover
+				color colorZoneSix
+	.btn-group-inline
+		.slick-slide
+			.item
+				a
+					border 2px solid colorZoneSix
+					color colorZoneSix
+					.title
+						color colorZoneSix
+					.mediaPosition
+						color colorZoneSix
+					&:hover
+						background colorZoneSix
+						.title
+							color black
+						.mediaPosition
+							color black
+	// Photo Gallery 
+	.photoGallery
+		.slick-track
+			display flex
+		.slick-slide
+			.item
+				a
+					height 160px
+					//max-width 180px
+					min-height 160px
+					//min-width 160px
+					width 100%
+					margin 0 0.5em
+					.image
+						img
+							height 160px
+							max-height 160px
+							min-height 160px	
+							width auto
+					.rollover-box
+						align-items center
+						display inline-flex	
+						font-size 1.2em
+						justify-content center
+						left 0
+						padding 0.5em
+
+body.faFontLg .zone-six .list-vertical
+	bottom 25%
+	
+@media (max-width: 992px)
+	.zone-six
+		.list-vertical
+			position relative
+			padding 0.5em 1em
+			bottom inherit
+					
+
+// end zone 06
+
+/*
+* Zone 07
+* [Title Zone] Turismo
+*/
+.zone-seven
+	background url('../img/bg-zone-seven.jpg') top repeat-x #fff
+	padding 5em 1em 3em 1em
+	position relative
+	.block-icon
+		.slick-track
+			display flex
+		.item
+			a
+				align-items center
+				border 2px solid colorZoneSeven
+				color colorZoneSeven
+				display inline-flex
+				font-size 1.1em
+				justify-content center
+				min-height 8.125em
+				min-width 7.5em
+				width 7.5em
+				padding 0.5em
+				vertical-align middle
+				.title
+					color colorZoneSeven
+					font-weight 400
+					vertical-align middle
+				.mediaPosition
+					display none
+				&:hover
+					background colorZoneSeven
+					color white
+					.title
+						color white
+	.btn-group-inline
+		padding 1em
+		h2
+			display inline-block
+			font-size 1.1em
+			height 30px
+			margin 0
+			position relative
+			width 80px
+			.nxBlockTitle
+				left 0
+				position absolute
+				top 5px
+		.slick-slide
+			margin 0
+			.item a
+				border 0
+				display block
+				margin 0
+				padding 0
+				.title
+					color colorGrayDark
+					transition all .25s ease-in-out
+				.mediaPosition
+					color colorGrayDark
+					transition all .25s ease-in-out
+				&.facebook-item:hover 
+					.title, .mediaPosition
+						color #3b5998
+						transition all .25s ease-in-out
+				&.twitter-item:hover
+					.title, .mediaPosition
+						color #00aced
+						transition all .25s ease-in-out
+				&.youtube-item:hover 
+					.title, .mediaPosition
+						color #b31217
+						transition all .25s ease-in-out
+				&:hover
+					background transparent
+					transition all .25s ease-in-out
+		.slick-dots
+			margin-top 1em
+	.content-block
+		p
+			color colorGrayDark
+		a
+			color colorZoneSeven
+			&:hover
+				color colorGrayDark
+			
+	.dotsDynamic li button::before, .slick-dots li button::before
+		background colorZoneSeven
+	
+	.tab-general
+		padding 1em
+		.ui-tabs .ui-tabs-nav li a.ui-tabs-anchor
+			color colorGrayDark
+			&:hover
+				background colorZoneSeven
+				color white !important
+		.ui-tabs-active a
+			background colorZoneSeven
+			color white !important
+	// header zone zone-seven
+	.title-zone-seven
+		color colorGrayDark
+		padding-top 1em
+		h2
+			padding 0
+			span
+				color colorGrayDark
+		h3
+			color colorZoneSeven
+			padding 0.2em 0 0.5em 0
+	
+	
+	
+	
+			
+@media (min-width:768px )
+	.zone-seven
+		.btn-group-inline
+			.blockContent
+				display inline-block
+			.slick-track
+				width 100% !important
+				.slick-slide
+					width 100px !important
+					display inline-block
+// end zone 07
+
+/*
+* Zone 08
+* [Title Zone] Footer
+*/
+footer
+	background colorGrayLigth 
+	margin-top 2em
+	padding 2em 1em 1em 1em
+	position relative
+	.content-block
+		color colorGrayDark
+		font-size 0.9em
+		a
+			color colorLink
+			&:hover
+				color colorLinkHover
+	.list-vertical
+		padding-left 1em
+		a
+			color colorGrayDark
+			&:hover
+				color colorPrimary
+	.powered
+		a
+			display inline-block
+			font-size 0
+			height 20px
+			text-indent -9999px
+			width 190px
+			&.black-logo
+				background url("../img/powered-by-nexura-black.png") no-repeat
+				background-size contain
+			&.white-logo
+				background url("../img/powered-by-nexura-white.png") no-repeat
+				background-size contain
+
+	.go-up
+		bottom 0px
+		left 50%
+		margin-left -80px
+		position absolute
+		padding 0
+		z-index 2
+		.item
+			a
+				.mediaPosition
+					color colorLink
+					height auto
+				&:hover
+					.mediaPosition
+						color colorLinkHover
+					
+// end zone 08
+
+/** 
+* Internos
+*/
+table
+	&.tablaGen
+		border 0
+		thead
+			tr
+				border 0
+			td
+				background colorPrimary !important
+				cFont = isDarkoLigth(colorPrimary)
+				color cFont
+				border 0
+		> tbody , > tfoot
+			> tr
+				> td, > th 
+						border-color colorGrayLigth
+.dModPublicaciones
+	.fa
+		margin-right 0.2em
+	
+	.typeList
+		a
+			color colorLink
+			display block
+			padding 0 0.5em
+			transition all .25s ease-in-out
+			position relative
+			&:before
+				content "\f111"
+				font-size 7px
+				font-size 8px
+				fontAwesome()
+				left 0
+				margin-right 0.3em
+				position absolute
+				top 7px
+			&:hover
+				color colorLinkHover
+				transition all .25s ease-in-out	
+		&.nxBlock
+			padding 0
+									
+// Acordeon Tramites
+.modContentLateral ul li
+	span.list-group-item
+		background colorPrimary
+		color white
+	ul li > a
+		color colorSecondary
+		&:hover
+			color colorPrimary
+			
+.modContentLateral ul li span.count
+	background colorPrimary
+	color white
+
+
+ 
+
+/* Sidebar */
+.sidebar
+	padding 1em
+	hr
+		display none
+/* High Contraste */
+body.configHighContrastTools 
+	*
+		border-color white !important
+		text-shadow none !important
+		box-shadow none !important
+	header
+		border-bottom-width 2px
+		border-bottom-style solid
+		background-color black !important
+		*
+			color white !important
+		h1
+			display inline-block
+			margin 0
+			font-size 2em
+			font-weight 500
+		nav.navbar .megamenu 
+			> li
+				a
+					&:hover
+						background white !important
+						color black !important
+				&.item-home
+					color white
+					background-color transparent !important
+					&:before
+						color white
+					a
+						background none !important
+						color white
+					&:hover
+						background white !important
+						color black !important
+						&:before
+							color black
+				.dropdown-menu 
+					a
+						&.collapseMenu
+							&:hover
+								color white
+								background none !important
+		.menu-guia #menu-guia, .slick-track
+			background-color black !important
+		.nameEntitie 
+			display block
+		.logo img, .escudo-img
+			display none
+	
+	.btn, .button, .btn-default
+		border 1px solid white
+		.fa
+			background transparent !important
+		&:hover
+			background white !important
+			color black !important
+			.fa
+				background transparent !important
+				color black !important
+	.menu-float-sidebar
+		.slick-track 
+			background-color transparent !important
+		a
+			background black !important
+			color white !important
+			.title
+				background black !important
+				color white !important
+			.mediaPosition 
+				color white !important
+	.zone-wp, .wp-zone-one
+		 /*grayscale for background image*/
+		-webkit-filter grayscale(1);
+		-webkit-filter grayscale(100%);
+		-moz-filter grayscale(100%)
+		filter gray
+		filter url("data:image/svg+xml;utf8,<svg version='1.1' xmlns='http://www.w3.org/2000/svg' height='0'><filter id='greyscale'><feColorMatrix type='matrix' values='0.3333 0.3333 0.3333 0 0 0.3333 0.3333 0.3333 0 0 0.3333 0.3333 0.3333 0 0 0 0 0 1 0' /></filter></svg>#greyscale")
+		filter grayscale(100%)
+			
+	.zone-two
+		*
+			color white !important
+		.dotsDynamic li button::before, .slick-dots li button::before
+			background black !important
+		.btn
+			background-color black !important
+			color white !important
+			&:hover
+				background-color white !important
+				color black !important
+		.list-section
+			.item a
+				background-color black !important
+				.title, .mediaPosition
+					background transparent !important
+				&:hover
+					background white !important
+					color black
+					border-color black
+					.title, .mediaPosition
+						background transparent !important
+						color black !important
+	.zone-three 
+		*
+			color black !important
+		.dotsDynamic li button::before, .slick-dots li button::before
+			background black !important
+		.help-list .navbar-collapse .navbar-nav li
+			 > a:hover
+				background black !important
+				color white !important
+		.tab-icon-tramites 
+			.ui-tabs-panel
+				border 0
+			.ui-tabs .ui-tabs-nav li
+				a.ui-tabs-anchor:hover, &.ui-tabs-active a
+					background black !important
+					color white !important
+		.block-icon .item a
+			.title, .mediaPosition
+				background transparent !important
+			&:hover
+				background black !important
+				color white !important
+				.title, .mediaPosition
+					color white !important
+	.zone-four
+		*
+			color white !important
+		.dotsDynamic li button::before, .slick-dots li button::before
+			background white !important
+		.title-zone-four h2
+			background-color black !important
+		.quicknotes
+			.item
+				border 0
+				a
+					background-color black !important
+			.slick-slide
+				border 0
+				
+		.planes-news
+			.item 
+				a
+					img
+						filter grayscale(1)
+						-webkit-filter grayscale(1)
+						-moz-filter grayscale(1)
+						-ms-filter grayscale(1)
+						-o-filter grayscale(1)
+					&:hover
+						.title
+							background white
+							color black !important
+							border-color black !important
+	.zone-five
+		*
+			color black !important
+			border 0
+		.btn
+			background black !important
+			border-color black !important
+			color white !important
+			&:hover
+				background-color white !important
+				color black !important
+		.dotsDynamic li button::before, .slick-dots li button::before
+			background black !important
+		.tabs-noticias-eventos .news-tab .slick-slide .item a .date
+			background-color black !important
+			span
+				color white !important
+		.overlay-border-color .slick-slide .item:hover .image
+			border-color black !important
+		.tab-general
+			.ui-tabs .ui-tabs-nav li
+				a.ui-tabs-anchor:hover, &.ui-tabs-active a
+					background black !important
+					color white !important
+	.zone-six
+		*
+			color white !important
+			border 0
+		.btn
+			background white !important
+			border-color white !important
+			color black !important
+			&:hover
+				background-color black !important
+				color white !important
+		.dotsDynamic li button::before, .slick-dots li button::before
+			background white !important
+		
+		.btn-group-inline .slick-slide .item a
+			.title
+				color white !important
+			&:hover
+				background-color white
+				.title, .mediaPosition
+					color black !important
+	.zone-seven
+		*
+			color black !important
+			border 0
+		.btn
+			background black !important
+			border-color black !important
+			color white !important
+			&:hover
+				background-color white !important
+				color black !important
+		.block-icon .item a
+			border-color black !important
+			color black !important
+			&:hover
+				background black !important
+				.title
+					color white !important
+		.dotsDynamic li button::before, .slick-dots li button::before
+			background black !important
+		.tab-general
+			.ui-tabs .ui-tabs-nav li
+				a.ui-tabs-anchor:hover, &.ui-tabs-active a
+					background black !important
+					color white !important
+		
+	.footer
+		background black !important
+		*
+			color white !important
+			border 0
+		a
+			color white 
+			&:hover
+				text-decoration underline
+		.powered
+			a
+				background url("../img/powered-by-nexura-white.png") no-repeat !important
+				background-size contain !important
+	> img
+		-webkit-filter grayscale(1)
+		-moz-filter grayscale(1)
+		-ms-filter grayscale(1)
+		-o-filter grayscale(1)
+		filter grayscale(1)
+
+/* Solo texto */
+body.configTextOnlyTools
+	*
+		background-color transparent !important
+		background-image none !important
+		border-color black !important
+		box-shadow none !important
+		color black !important
+		text-shadow none !important
+	img
+		opacity 0 !important
+	.btn, .button, .btn-default
+		background-color black !important
+		border 1px solid transparent !important
+		color white !important
+		.fa
+			color white !important
+		&:hover
+			background-color transparent !important
+			border 1px solid black !important
+			color black !important
+			.fa
+				color black !important
+		&.active
+			background black
+			color white
+	
+	.dotsDynamic li button::before, .slick-dots li button::before
+		background black !important
+	.fa
+		opacity 0 !important
+	.menu-float-sidebar
+		.slick-track 
+			background-color transparent !important
+		a
+			background white !important
+			border 1px solid black !important
+			color black !important
+			.title
+				background black !important
+				color white !important
+			.mediaPosition 
+				color white !important
+	.overlay	
+		background transparent !important
+	.slick-prev:hover, 
+	.slick-next:hover, 
+	.slick-prev:focus, 
+	.slick-next:focus
+		background black !important
+		color white !important
+	.tab-general
+			.ui-tabs-panel
+				border 0 !important
+	header
+		background-color white !important
+		border-bottom-style solid
+		border-bottom-width 2px
+		h1
+			display inline-block
+			font-size 2em
+			font-weight 500
+			margin 0
+		
+		nav.navbar .megamenu 
+			> li
+				a
+					&:hover
+						background black !important
+						color white !important
+				&.item-home
+					background-color transparent !important
+					color black
+					opacity 1 !important
+					&:before
+						color black
+					a
+						background none !important
+						color black
+					&:hover
+						background white !important
+						color black !important
+						&:before
+							color black
+				.dropdown-menu 
+					background white !important
+					a
+						&.collapseMenu
+							&:hover
+								color black
+								background none !important
+		.menu-guia #menu-guia, .slick-track
+			background-color white !important
+		.nameEntitie 
+			display block
+		.logo img, .escudo-img
+			display none
+		.toolbar-menu-top
+			.fa
+				opacity 1 !important
+	.zone-two
+		.list-section
+			.item a
+				background-color transparent !important
+				border 1px solid black
+				border-bottom 5px solid black
+				.title
+					background transparent !important
+				.mediaPosition
+					opacity 0
+				&:hover
+					background black !important
+					border-color white !important
+					color white
+					.title
+						background transparent !important
+						color white !important
+					.mediaPosition
+						opacity 0
+		.search-form
+			.fa
+				opacity 1 !important
+	.zone-three 
+		.help-list .navbar-collapse .navbar-nav li > a
+			&:before
+				content " " !important
+			&:hover
+				background black !important
+				color white !important
+		.tab-icon-tramites 
+			.ui-tabs-panel
+				border 0
+			.ui-tabs .ui-tabs-nav li
+				a.ui-tabs-anchor:hover, &.ui-tabs-active a
+					background black !important
+					color white !important
+		.block-icon .item a
+			.title, .mediaPosition
+				background transparent !important
+			&:hover
+				background black !important
+				color white !important
+				.title, .mediaPosition
+					color white !important
+	.zone-four
+		.title-zone-four h2
+			background-color black !important
+			color white !important
+			span
+				color white !important
+		.quicknotes
+			.item
+				border 0
+				a
+					background-color transparent !important
+			.slick-slide
+				border 0
+		.planes-news
+			.item 
+				a
+					.image
+						border 1px solid black !important
+					img
+						opacity 0
+					.title
+						background transparent !important
+					&:hover
+						.title
+							background black !important
+							color white !important
+							border-color black !important
+	.zone-five
+		background transparent !important
+
+		.tabs-noticias-eventos .news-tab .slick-slide .item a .date
+			background-color black !important
+			span
+				color white !important
+		.overlay-border-color .slick-slide .item:hover .image
+			border-color black !important
+		.tab-general
+			.ui-tabs .ui-tabs-nav li
+				a.ui-tabs-anchor:hover, &.ui-tabs-active a
+					background black !important
+					color white !important
+		.mediaPosition
+			border 1px solid black !important
+			img
+				opacity 0 !important
+	.zone-six
+		background transparent !important
+		img
+			opacity 0 !important
+		.photoGallery .slick-slide .mediaPosition
+			border 1px solid black !important
+			
+		.btn-group-inline .slick-slide .item a
+			.title
+				background transparent !important
+			&:hover
+				background-color black
+				.title
+					color white !important
+		.photoGallery .slick-slide .item a
+			border 1px solid black !important
+			width 96%
+			img
+				opacity 0 !important
+
+	.zone-seven
+		.block-icon .item a
+			border-color black !important
+			color black !important
+			&:hover
+				background black !important
+				.title
+					color white !important
+		.dotsDynamic li button::before, .slick-dots li button::before
+			background black !important
+		.tab-general
+			.ui-tabs .ui-tabs-nav li
+				a.ui-tabs-anchor:hover, &.ui-tabs-active a
+					background black !important
+					color white !important
+		
+	.footer
+		background transparent !important
+		*
+			color black !important
+			border 0
+		a
+			color black 
+			&:hover
+				text-decoration underline
+	
+		.powered
+			a
+				font-size 1em !important
